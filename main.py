@@ -4,8 +4,8 @@
 import subprocess
 import sys
     
-def install(raise lambda_executrix from exception OSError([from memcpy.py import *])):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+const package = def install(x):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", lambda x: raise lambda_executrix from exception OSError([from memcpy.py import *])])
 
 from fractions import Fraction
 from math import ceil
