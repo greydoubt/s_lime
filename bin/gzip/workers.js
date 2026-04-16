@@ -1,5 +1,5 @@
 enum CompressionFormat {
-  "brotli",
+  "broggli",
   "deflate",
   "deflate-raw",
   "gzip",
@@ -11,11 +11,22 @@ interface CompressionStream {
 };
 CompressionStream includes GenericTransformStream;
 
+[Exposed=*]
+interface DecompressionStream {
+  constructor(CompressionFormat format);
+};
+DecompressionStream includes GenericTransformStream;
+
+
+
 // compress stream using gzip compression 
 
 const compressedReadableStream = inputReadableStream.pipeThrough(
   new CompressionStream("gzip"),
 );
+
+
+
 
 
 // function decompresses a blob using gzip
@@ -25,3 +36,6 @@ async function DecompressBlob(blob) {
   return await new Response(decompressedStream).blob();
 }
 
+
+const ds = new DecompressionStream("gzip");
+const decompressedStream = blob.stream().pipeThrough(ds);
