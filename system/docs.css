@@ -18,7 +18,7 @@ body {
   padding: 0;
 }
 
-/* Layout: */
+/* lambda layout section layer 0 */
 
 .col-main {
   flex: 1;
@@ -149,7 +149,7 @@ pre {
   font-size: 14px;
 }
 
-/* responsive shiz */
+/* reactive layer */
 @media only screen and (min-width: 640px) {
   .layout {
     display: flex;
