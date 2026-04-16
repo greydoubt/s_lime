@@ -1,7 +1,8 @@
 # s_lime
 
 
-	Retrofitting JIT Compilers into C Interpreters and boot them as Operating System Kernels (BIOS -1.0113)
+				Retrofitting JIT Compilers into C Interpreters 
+			and boot them as Operating System Kernels (BIOS -1.0113)
 
 	                               Introduction
                                ============
