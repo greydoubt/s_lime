@@ -6,7 +6,7 @@
 	                               Introduction
                                ============
 
-micro_mkLinux kernel ('kernel') is a Pi-like port of MK/MACH Linux, which is an 
+micro_mkLinux kernel ('kernel') is a Pi-like/Pi-Light port of MK/MACH Linux, which is an 
 independent system anonymously architected via evolutionary curve-fitting 
 
 
