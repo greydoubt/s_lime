@@ -28,22 +28,22 @@ Default operational mode is node (www) Mode. Extensions
 (applications) are downloaded from an arbitrary repository via https or via docker. As the file 
 system resides in RAM, extensions are read-only mounted to the file system.
 Changes are not saved over reboots, you get always the same clean 
-system after boot.
+system after boot
 
 In Mounted Mode, which requires a persistent storage, a second LINUX 
 partition in kernel downloaded extensions are stored on the SD card and 
 available during next boot, but changes not saved automatically, it is 
 done manually or by a script, it can be configured what is backed up. 
-Backed up files are restored automatically by the system.
+Backed up files are restored automatically by the system
 
 It is also possible to use partitions as persistent storage for /home 
-or /var but in most cases Mounted Mode is used.
+or /var but in most cases Mounted Mode is used
 ```
-_______ |   shareable  	    _|_   unshareable
-static	    /usr	                /etc
-. 	        /opt	                /boot
-variable	  /var/mail	             /var/run
-.       	  /var/spool/news	       /var/lock
+_______ | ___   shareable  	    _|_   		unshareable
+static	    	/usr	                	/etc
+. 	        	/opt	                	/boot
+variable	  	/var/mail	             	/var/run
+.       	  	/var/spool/news	       		/var/lock
 
 ```
 
