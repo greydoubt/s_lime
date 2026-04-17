@@ -165,15 +165,18 @@ kernel
 It is not possible to log in as root
 
 
-"MIPS IV Instruction Set
+
+
+
+MIPS IV Instruction Set
 ================
+Description from page A-22 of the "MIPS IV Instruction Set" manual
+   (revision 3.1)
+   
+<a href="https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
 
- Description from page A-22 of the "MIPS IV Instruction Set" manual
-   (revision 3.1) 
+<a href="https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
 
-	   <a href="https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
-
-		<a href="https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
 ```
    Load a value from memory. Use the cache and main memory as
    specified in the Cache Coherence Algorithm (CCA) and the sort of
