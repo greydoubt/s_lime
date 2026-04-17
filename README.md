@@ -132,6 +132,46 @@ variable	  	/var/mail	             	/var/run
 
 
 
+
+####
+
+
+
+Initialisation of the Host Computer
+===================================
+
+## How to build something with debug information?
+
+You can use env CFLAGS=-g make -f Makefile.bsd-wrapper build to
+build any module with debugging information, but you'll need to remove
+XOBJDIR/xorg-config.cache.${MACHINE} before doing that because
+autoconf caches the value of CFLAGS in its cache.
+
+
+
+## How to get a core file out of the X server?
+
+Several things are needed:
+
+1. set kern.nosuidcoredump=3 in /etc/sysctl.conf
+2. start the X server as root, with the -keepPriv option. If you use
+   xenodm, you can add the option in /etc/X11/xenodm/Xservers. If you
+   want to use startx, you need to run it as root, like this:
+
+    startx -- /usr/X11R6/bin/X -keepPriv
+
+Now the X server should dump core when catching a fatal signal and the
+core dump should be in /var/crash/Xorg/<pid>.core.
+
+Alternatively, if the X server is using the modesetting(4) driver
+(it's the case with most recent AMD and Intel GPUs), it can be started
+as a regular user, without setting kern.nosuidcoredump=3, and the core
+dump will be in the current directory where startx was executed.
+
+
+
+
+
 ####
 
 
