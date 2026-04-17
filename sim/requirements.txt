@@ -1,0 +1,17 @@
+
+    libstdc++.so.6 - provided by suse32_base-13.1
+    libz.so.1 - provided by suse32_base-13.1
+    libXxf86vm.so.1 - provided by suse32_x11-13.1
+    libGL.so.1 - provided by suse32_glx-13.1
+    libopenal.so.1 - provided by suse32_openal-13.1
+    libm.so.6 - provided by suse32_base-13.1
+    librt.so.1 - provided by suse32_base-13.1
+    libpthread.so.0 - provided by suse32_base-13.1
+    libdl.so.2 - provided by suse32_base-13.1
+    libcrypto.so.1.0.0 - provided by suse32_openssl-13.1
+    libXext.so.6 - provided by suse32_x11-13.1
+    libXrandr.so.6 - provided by suse32_x11-13.1
+    libGLU.so.6 - provided by suse32_glx-13.1
+    libssl.so.1.0.0 - provided by suse32_openssl-13.1
+    libgcc_s.so.1 - provided by suse32_base-13.1
+    libc.so.6 - provided by suse32_base-13.1
