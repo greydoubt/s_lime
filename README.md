@@ -18,6 +18,80 @@ it ideal for custom system, appliances as well as to learn Linux
 specially on the micro-kernel or BIOS level
 
 
+
+Preface
+=======
+
+UNTITLED()			     LOCAL			    UNTITLED()
+
+NAME
+       rescue -- rescue	utilities in /rescue
+
+DESCRIPTION
+       The  /rescue  directory	contains  a collection of common utilities in-
+       tended for use in recovering a badly damaged system.  With the  transi-
+       tion  to	a dynamically-linked root beginning with FreeBSD 5.2, there is
+       a real possibility that the standard tools in /bin and /sbin may	become
+       non-functional due to a failed upgrade or a disk	error.	The  tools  in
+       /rescue are statically linked and should	therefore be more resistant to
+       damage.	 However,  being  statically  linked, the tools	in /rescue are
+       also less functional than the standard utilities.  In particular,  they
+       do not have full	use of the locale, pam(3), and nsswitch	libraries.
+
+       If your system fails to boot, and it shows a prompt similar to:
+
+	     Enter full	pathname of shell or RETURN for	/bin/sh:
+
+       the first thing to try running is the standard shell, /bin/sh.  If that
+       fails,  try  running  /rescue/sh, which is the rescue shell.  To	repair
+       the system, the root partition  must  first  be	remounted  read-write.
+       This can	be done	with the following mount(8) command:
+
+	     /rescue/mount -uw /
+
+       The  next  step	is  to	double-check  the contents of /bin, /sbin, and
+       /usr/lib, possibly mounting a FreeBSD rescue or "live file system"  CD-
+       ROM  (e.g.,  disc2  of  the officially released FreeBSD ISO images) and
+       copying files from there.  Once it  is  possible	 to  successfully  run
+       /bin/sh,	/bin/ls, and other standard utilities, try rebooting back into
+       the standard system.
+
+       The  /rescue  tools  are	 compiled using	crunchgen(1), which makes them
+       considerably more compact than the  standard  utilities.	  To  build  a
+       FreeBSD	system	where  space is	critical, /rescue can be used as a re-
+       placement for the standard /bin and /sbin  directories;	simply	change
+       /bin and	/sbin to be symbolic links pointing to /rescue.	 Since /rescue
+       is  statically linked, it should	also be	possible to dispense with much
+       of /usr/lib in such an environment.
+
+       In contrast to its predecessor /stand, /rescue is updated during	normal
+       FreeBSD source and binary upgrades.
+
+FILES
+       /rescue	Root of	the rescue hierarchy.
+
+SEE ALSO
+       crunchgen(1), crash(8)
+
+HISTORY
+       The rescue utilities first appeared in FreeBSD 5.2.
+
+
+
+BUGS
+       Most  of	 the  rescue tools work	even in	a fairly crippled system.  The
+       most egregious exception	is the rescue version  of  vi(1),  which  cur-
+       rently  requires	 that  /usr  be	 mounted  so  that  it	can access the
+       termcap(5) files.  Hopefully, a failsafe	termcap(3) entry will  eventu-
+       ally  be	 added	into the ncurses(3) library, so	that /rescue/vi	can be
+       used even in a system where /usr	cannot immediately be mounted.	In the
+       meantime, the rescue version of the  ed(1)  editor  can	be  used  from
+       /rescue/ed if you need to edit files, but cannot	mount /usr.
+
+FreeBSD	6.0			 July 23, 2003			     RESCUE(8)
+
+
+
 Concept
 =======
 
