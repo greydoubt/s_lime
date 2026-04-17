@@ -1,0 +1,35 @@
+$ file ./runner
+./runner: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.24, BuildID[sha1]=2be998c78cf1f2c65279abccb8e71ffd7a1c00a1, stripped
+$ readelf -d ./runner
+
+Dynamic section at offset 0x3a2e94 contains 40 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libz.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libXxf86vm.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libGL.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libopenal.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libm.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [librt.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libpthread.so.0]
+ 0x00000001 (NEEDED)                     Shared library: [libdl.so.2]
+ 0x00000001 (NEEDED)                     Shared library: [libcrypto.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libXext.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libX11.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libXrandr.so.2]
+ 0x00000001 (NEEDED)                     Shared library: [libGLU.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libssl.so.1.0.0]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+
+$ ftp https://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.1/repo/oss/suse/i586/libopenal1-1.15.1-2.1.2.i586.rpm
+Trying [2001:638:60f:110::1:2]:443 ...
+ftp: Can't connect to `2001:638:60f:110::1:2:443': No route to host
+Trying 134.76.12.6:443 ...
+Requesting https://ftp5.gwdg.de/pub/opensuse/discontinued/distribution/13.1/repo/oss/suse/i586/libopenal1-1.15.1-2.1.2.i586.rpm
+100% |****************************************************************************|   159 KiB  588.43 KiB/s    00:00 ETA
+162952 bytes retrieved in 00:00 (588.19 KiB/s)
+$ tar xvf libopenal1-1.15.1-2.1.2.i586.rpm
+x ./usr/lib/libopenal.so.1
+x ./usr/lib/libopenal.so.1.15.1
+$ cp ./usr/lib/libopenal.so.1* /emul/linux32/usr/lib/
