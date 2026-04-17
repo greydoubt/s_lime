@@ -165,6 +165,28 @@ kernel
 It is not possible to log in as root
 
 
+"MIPS IV Instruction Set
+================
 
+ Description from page A-22 of the "MIPS IV Instruction Set" manual
+   (revision 3.1) 
 
+	   <a href="https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
 
+		<a href="https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
+```
+   Load a value from memory. Use the cache and main memory as
+   specified in the Cache Coherence Algorithm (CCA) and the sort of
+   access (IorD) to find the contents of AccessLength memory bytes
+   starting at physical location pAddr. The data is returned in the
+   fixed width naturally-aligned memory element (MemElem). The
+   low-order two (or three) bits of the address and the AccessLength
+   indicate which of the bytes within MemElem needs to be given to the
+   processor. If the memory access type of the reference is uncached
+   then only the referenced bytes are read from memory and valid
+   within the memory element. If the access type is cached, and the
+   data is not present in cache, an implementation specific size and
+   alignment block of memory is read and loaded into the cache to
+   satisfy a load reference. At a minimum, the block is the entire
+   memory element.
+```
