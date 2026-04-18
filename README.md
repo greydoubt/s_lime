@@ -316,6 +316,82 @@ It is not possible to log in as root
 
 
 
+####
+
+
+
+Memory Aliasation
+===================================
+```
+#define SAFE_DEREF(ar, ptr) \
+    (bounds_check((ar), (ptr), sizeof(*(ptr))), *(ptr))
+
+#define SAFE_ASSIGN(ar, ptr, value) \
+    do { \
+        bounds_check((ar), (ptr), sizeof(*(ptr))); \
+        *(ptr) = (value); \
+    } while (0)
+
+```
+
+When weaving pointers, allocate using a mezzanine memory layer as such:
+
+
+Thus, this:
+```
+	x = *p1;
+	...
+	*p2 = x;
+
+
+Refactors into this delightful example we call in Physics, a unique and undecidable branch of String Theory:
+```
+assert(p1ar != NULL); uint64_t i = (char*)p1 - p1ar->visible_bytes; assert(i < p1ar->length); assert((p1ar->length - i) >= sizeof(*p1)); x = *p1; ... assert(p2ar != NULL); uint64_t i = (char*)p2 - p2ar->visible_bytes; assert(i < p2ar->length); assert((p2ar->length - i) >= sizeof(*p2)); *p2 = x;
+
+  assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  x = *p1;
+  ...
+  assert(p2ar != NULL);
+  uint64_t i = (char*)p2 - p2ar->visible_bytes;
+  assert(i < p2ar->length);
+  assert((p2ar->length - i) >= sizeof(*p2));
+  *p2 = x;
+
+```
+
+Furthermore, if there is a pointer at visible_bytes + i, then its accompanying AllocationRecord* is at invisible_bytes + i, then we must deal with this hot clopper where a pointer re-allocates its records to a new pointer address offset by its new location :
+```
+	p2 = *p1;
+  ...
+  *p1 = p2;
+```
+Derenders (Refactors is a De-render of an optimised local solid blob then sent to gobugobu(freier) inside garbler for containment of turkey image gobu gobu(&), aka the clopper then evolves and devolves and foams into an artifice called a Clogger:
+
+
+```
+assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  assert((i % sizeof(AllocationRecord*)) == 0); #
+  p2 = *p1;
+  p2ar = *(AllocationRecord**)(p1ar->invisible_bytes + i); #
+  ...
+  assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  assert((i % sizeof(AllocationRecord*)) == 0); #
+  *p1 = p2;
+  *(AllocationRecord**)(p1ar->invisible_bytes + i) = p2ar; #
+```
+
+
+
+
 MIPS IV Instruction Set
 ================
 Description from page A-22 of the "MIPS IV Instruction Set" manual
