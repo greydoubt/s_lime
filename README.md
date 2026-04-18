@@ -320,8 +320,12 @@ It is not possible to log in as root
 
 
 
-Memory Aliasation
+Memory Aliasation for Threading Streams using Function Pointers
 ===================================
+
+The default rewriting of a pointer load or store is to two loads or stores, which requires Quantum in order to replace the now-assumed-broken atomicity. Atomicity means freeing memory really does free memory rather than just unlink a node from the rest of the list; another graph still presumably may include that node and therefore the system has global inconsistency from just 1,3 Ramsey
+
+
 ```
 #define SAFE_DEREF(ar, ptr) \
     (bounds_check((ar), (ptr), sizeof(*(ptr))), *(ptr))
