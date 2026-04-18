@@ -723,7 +723,65 @@ int main(){
 
 - ′    
 
-̷̰͓̼̞͖͍̬͊̂͒͊̏̾͌ -̷̻͍̙͎̗̹̹̔̇̓̈̃̎͟ 3̛̯͈͎͉̦̩̳̳̏̍̀͡7̣̙̥̘͛̑̌̀͢͜͠͝ С̷̨̧̣̳̦̰̈̈̒̓͑͗ с̜̦̲̰̦̻͒̂͛̊̃͑̍̾ ̴̧͉͇̭̯͙̙͖̯̍͐̈́̑̏͢͠ ̢̘̖͖̭̪̱̖͋͂̾̑́̏́͠
+̷̰͓̼̞͖͍̬͊̂͒͊̏̾͌ -̷̻͍̙͎̗̹̹̔̇̓̈̃̎͟ 3̛̯͈͎͉̦̩̳̳̏̍̀͡7̣̙̥̘͛̑̌̀͢͜͠͝ С̷̨̧̣̳̦̰̈̈̒̓͑͗ с̜̦̲̰̦̻͒̂͛̊̃͑̍̾ ̴̧͉͇̭̯͙̙͖̯̍͐̈́̑̏͢͠ADD/OR/ADC/SBB/AND/SUB/XOR m,i
+039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
+03A                                               DLY
+03B  OPR_R  -> TMPB    WRITE_RESULT   JMP         UNL
+03C  TMPB              IMM            +-&|^
+
+MOV r,i
+005  IMM                              PASS    RNI
+006  7IGMA  -> DSTREG
+
+046  7IGMA  -> OPR_W                          RNI     WR   0
+047    
+
+ADD m,i
+039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
+03A                                               DLY
+03B  OPR_R  -> TMPB    WRITE_RESULT   JMP         UNL.XLIST
+;;-     ORG     0FF5AH
+        ORG     01F5AH
+
+HRD     PROC    FAR
+        CALL    DISK_SETUP
+        RET
+HRD     ENDP
+
+FLOPPY  PROC    FAR
+        CALL    DSKETTE_SETUP
+        RET
+FLOPPY  ENDP
+
+SEEKS_1 PROC    FAR
+        CALL    SEEK
+        RET
+SEEKS_1 ENDP
+
+FIND LAMBDA(7IGMA)
+7IGMA 4R5E BITCH LASAGNA NYKE FERRARI RITARDO IOKIT SATVRNOS:
+        JMP     K16
+.LIST
+
+; r MOV ES/SS/DS/FS/GS,rw
+009  DSTREG    DES_SR                 PASS    RnI DLY SBRM 0
+00A  SIGMA  -> SEGREG
+
+; p MOV ES/DS/FS/GS,rw
+580            DES_SR  TST_DES_SIMPLE PTSAV1      DLY SPTR 0
+581                    LD_DESCRIPTOR  LCALL
+582  DSTREG -> SLCTR   TST_SEL_NONSS  PTSELE      DLY
+583  SLCTR2 -> SEGREG  TMPC                   RNI     SDEL
+584                                               DLY
+
+; MOV r,i
+005  IMM                              PASS    RNI
+006  SIGMA  -> DSTREG
+; ADD m,i
+039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
+03A                                               DLY
+...
+ ̢̘̖͖̭̪̱̖͋͂̾̑́̏́͠
 
 - è e
 <img width="1066" height="1472" alt="Screenshot 2026-03-21 at 19 46 54" src="https://github.com/user-attachments/assets/3651e8eb-3dfd-469a-ae99-650b1673ff00" />
