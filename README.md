@@ -281,9 +281,9 @@ SD card partitioning
 ====================
 
 First partition (mmcblk0p1) is VFAT type; it contains the basic kernel and operating 
-system and a boot loader, firmware, and other support 
-files. Partition stays unmounted during operation, as the system does not using it 
-after boot and never writes in-flight
+system and a boot loader, firmware, and other support files such as /bin/ ... /etc
+
+Partition stays unmounted during operation, as the system stops using this after boot and never writes in-flight
 
 While kernel works fine in Cloud Mode without any additional 
 partition, for Mounted Mode there must be a LINUX ext4 type partition 
@@ -830,3 +830,83 @@ FIND LAMBDA(7IGMA)
 }
 
 
+
+
+Installing Shit on your Computer
+===================================
+
+Building Distribution Packages
+-----------------------------------
+
+(System with no pre-installed extensions)
+
+Build distribution package
+```
+gcc distro_math.c -o pkg_math
+./pkg_math
+```
+
+Build using local libkrun changes from ../libkrun
+```
+Generic Script and generic kernel runtime library extension (libkrun)
+./scr/build-dist.sh --with-local-libkrun
+
+# 1. Configure build
+./configure --with-libkrun=local
+
+# 2. Compile everything
+make
+
+# 3. Package it
+make dist
+
+gcc -I./include -L./lib -lkrun src/main.c -o myprog
+
+```
+
+Running Tests via Makefile.toml or Rust
+-----------------------------------
+
+Run all tests
+```
+cargo make test
+```
+
+Run specific test suites
+```
+cargo make test-cli        # CLI tests only
+cargo make test-sandbox    # Sandbox tests only
+cargo make test-machine    # MicroVM tests only
+cargo make test-pack       # Pack tests only
+cargo make test-lib        # Unit tests (no VM required)
+
+```
+test: test-cli test-sandbox test-machine test-pack test-lib
+
+test-cli:
+\t./tests/test_cli.sh
+
+test-sandbox:
+\t./tests/test_sandbox.sh
+
+test-machine:
+\t./tests/test_machine.sh
+
+test-pack:
+\t./tests/test_pack.sh
+
+test-lib:
+\tgcc tests/test_lib.c src/lib.c -o test_lib
+\t./test_lib
+
+```
+
+
+
+
+
+000
+===================================
+
+0
+-----------------------------------
