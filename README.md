@@ -421,3 +421,21 @@ Description from page A-22 of the "MIPS IV Instruction Set" manual
    satisfy a load reference. At a minimum, the block is the entire
    memory element.
 ```
+
+```
+load_memory (SIM_DESC SD,
+	     sim_cpu *CPU,
+	     address_word cia,
+	     uword64* memvalp,
+	     uword64* memval1p,
+	     int CCA,
+	     unsigned int AccessLength,
+	     address_word pAddr,
+	     address_word vAddr,
+	     int IorD)
+
+```
+
+
+
+
