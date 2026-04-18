@@ -11,6 +11,31 @@ micro_mkLinux kernel ('kernel') is a Pi-like/Pi-Light port of MK/MACH Linux, whi
 independent system anonymously architected via evolutionary curve-fitting 
 
 
+# Suppress error reports for code in a file or in a function:
+src:bad_file.cpp
+
+# Ignore all functions with names containing MyFooBar:
+fun:*MyFooBar*
+
+# Disable out-of-bound checks for global:
+global:bad_array
+
+# Disable out-of-bound checks for global instances of a given class ...
+type:Namespace::BadClassName
+
+# ... or a given struct. Use wildcard to deal with anonymous namespace.
+type:Namespace2::*::BadStructName
+
+# Disable initialization-order checks for globals:
+global:bad_init_global=init
+
+type:*BadInitClassSubstring*=init
+src:bad/init/files/*=init
+
+
+
+
+
 micro_mkLinux is not a traditional distribution but a toolkit to 
 create your own customized system. It offers not only flexibility, 
 small footprint but a very recent kernel and set of applications making 
