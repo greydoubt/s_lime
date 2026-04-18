@@ -439,3 +439,205 @@ load_memory (SIM_DESC SD,
 
 
 
+
+Memory Aliasation for Threading Streams using Function Pointers
+===================================
+
+The default rewriting of a pointer load or store is to two loads or stores, which requires Quantum in order to replace the now-assumed-broken atomicity. Atomicity means freeing memory really does free memory rather than just unlink a node from the rest of the list; another graph still presumably may include that node and therefore the system has global inconsistency from just 1,3 Ramsey
+
+
+```
+#define SAFE_DEREF(ar, ptr) \
+    (bounds_check((ar), (ptr), sizeof(*(ptr))), *(ptr))
+
+#define SAFE_ASSIGN(ar, ptr, value) \
+    do { \
+        bounds_check((ar), (ptr), sizeof(*(ptr))); \
+        *(ptr) = (value); \
+    } while (0)
+
+```
+
+When weaving pointers, allocate using a mezzanine memory layer as such:
+
+
+Thus, this:
+```
+	x = *p1;
+	...
+	*p2 = x;
+
+
+Refactors into this delightful example we call in Physics, a unique and undecidable branch of String Theory:
+```
+assert(p1ar != NULL); uint64_t i = (char*)p1 - p1ar->visible_bytes; assert(i < p1ar->length); assert((p1ar->length - i) >= sizeof(*p1)); x = *p1; ... assert(p2ar != NULL); uint64_t i = (char*)p2 - p2ar->visible_bytes; assert(i < p2ar->length); assert((p2ar->length - i) >= sizeof(*p2)); *p2 = x;
+
+  assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  x = *p1;
+  ...
+  assert(p2ar != NULL);
+  uint64_t i = (char*)p2 - p2ar->visible_bytes;
+  assert(i < p2ar->length);
+  assert((p2ar->length - i) >= sizeof(*p2));
+  *p2 = x;
+
+```
+
+Furthermore, if there is a pointer at visible_bytes + i, then its accompanying AllocationRecord* is at invisible_bytes + i, then we must deal with this hot clopper where a pointer re-allocates its records to a new pointer address offset by its new location :
+```
+	p2 = *p1;
+  ...
+  *p1 = p2;
+```
+Derenders (Refactors is a De-render of an optimised local solid blob then sent to gobugobu(freier) inside garbler for containment of turkey image gobu gobu(&), aka the clopper then evolves and devolves and foams into an artifice called a Clogger:
+
+
+```
+assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  assert((i % sizeof(AllocationRecord*)) == 0); #
+  p2 = *p1;
+  p2ar = *(AllocationRecord**)(p1ar->invisible_bytes + i); #
+  ...
+  assert(p1ar != NULL);
+  uint64_t i = (char*)p1 - p1ar->visible_bytes;
+  assert(i < p1ar->length);
+  assert((p1ar->length - i) >= sizeof(*p1));
+  assert((i % sizeof(AllocationRecord*)) == 0); #
+  *p1 = p2;
+  *(AllocationRecord**)(p1ar->invisible_bytes + i) = p2ar; #
+```
+
+
+
+
+MIPS IV Instruction Set
+================
+Description from page A-22 of the "MIPS IV Instruction Set" manual
+   (revision 3.1)
+   
+<a href="https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
+
+<a href="https://www.cs.cmu.edu/afs/cs/academic/class/15740-f97/public/doc/mips-isa.pdf">https://cscie95.dce.harvard.edu/fall2023/slides/MIPS%20Instruction%20Set.pdf</a>
+
+```
+   Load a value from memory. Use the cache and main memory as
+   specified in the Cache Coherence Algorithm (CCA) and the sort of
+   access (IorD) to find the contents of AccessLength memory bytes
+   starting at physical location pAddr. The data is returned in the
+   fixed width naturally-aligned memory element (MemElem). The
+   low-order two (or three) bits of the address and the AccessLength
+   indicate which of the bytes within MemElem needs to be given to the
+   processor. If the memory access type of the reference is uncached
+   then only the referenced bytes are read from memory and valid
+   within the memory element. If the access type is cached, and the
+   data is not present in cache, an implementation specific size and
+   alignment block of memory is read and loaded into the cache to
+   satisfy a load reference. At a minimum, the block is the entire
+   memory element.
+```
+
+load_memory (SIM_DESC SD,
+	     sim_cpu *CPU,
+	     address_word cia,
+	     uword64* memvalp,
+	     uword64* memval1p,
+	     int CCA,
+	     unsigned int AccessLength,
+	     address_word pAddr,
+	     address_word vAddr,
+	     int IorD)
+
+
+#include <iostream>
+using namespace std;
+
+template <typename Toad>
+Toad frog(Toad x, Toad y)
+{
+    return (x > y) ? x : y;
+}
+
+int main(){
+    std::cout << frog<char>('________________>̨͎͈̤͇̩̞̣̍̊͊̄́͆̀͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝', &0.7*'-̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅλx . ophidia ereц grex / house milady carson @greydoubt battletoads ROM hack Eiko Dolphinivm 2.0k
+̨͎͈̤͇̩̞̣̍̊͊̄́͆̀͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ombo breaker č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̨̙̜̝̰͔̰̱͎͈̤͇̩̞̣̿̉͒͌̍̊͊̄́͆̀͘͢͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞ ̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌  - š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś  ͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̙̜̝̰͔̰̱̿̉͒͌͘͢see? one of the battletoads was secretly a frog# battletoads
+
+̨͎͈̤͇̩̞̣̍̊͊̄́͆̀͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞
+̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌
+
+- š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś# battletoads
+
+̨͎͈̤͇̩̞̣̍̊͊̄́͆̀͢ ̫͓͎͓͍͎͉̙̐̓̈́̒̑́͘͠͞
+̨͉̟̲͍̓͛̓̃̎́̆͘̚͝ -̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ ̢̢̛̘̞̹͖͚̤̮̍̈́̑̾̓̿́̈́̅͟ - č ć č′′ č č‡ ç̌
+
+- š š š′′ s̄ š′′u sw̄ š‡ ş̄ š‡u şw̄ ŝ ś
+
+͇͙̭̫̯̑͂͊̈͑̽̂̚͜ -̸̧̬̹̬̝̹͍̳̭͛́̒͆̋̈ 2̶̢̡͍͖̘̫̎͗̀̊̋̌͟6̨̢̻̯͙̼͎͈͆͛̌̃͆͘̕͢͢ К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅ к̸̡̞̪̞̣̦̤͔̙̂̒͛̽̈̂̋̆ͅӀ̶̨̩̫̞͙̙̳̖̼͙͛̂̈̓̄͌̅͆͘у̸̛̱̫̟̩̱̥͓͗͌̔͋͗ ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ ̧͚̳̤̰̼̑̓͛̈́̕ ̙̜̝̰͔̰̱̿̉͒͌͘͢
+̧̢͕̳̲̖̝̗̜̑̄̿̀̒̆̒͝ͅ -̸̭͍͚͔̟͔̃́̊̊̃̌̇͟ 2̭̼͇̙̘̮̺͊̊͐̿́͐͝7̷͓̝̣̗̣̍̍̇̆̚̚͝ Л͙͕̫̞̳̳̻̫̈̃̇͌̄̕͜ л̧̢̣̪̫̩̮̾̍̾̊̑́ͅ ̶̡̛̛̤͚̝̹̥̮̱̖͍͒͌̓̌̿͒̌͘ ̛̗̥͔̟͖̣͎͋̉̿̔̿͘͞͠͞
+̴̝͉͕̞̫̠̻̺͚͐͐͛̿̎̊͆͞͠ -̡̗̻͙̰̩͕̙̄͒̿̑͋͢ 3̸̨̡͙̥̻͚̗̱̅͆́̿̇̓͗͌̾0͎͖̞̼̻̩͍͓̑̽̅̇́͘ М̡̗͉͖͙̙͓͗̆̌͑̊͆͡м̞̲͓͖̘͇͙̇͌͛͌̏̕͘͢͝ ̷̛̞͙͎̠̮̲̅̈̎̐̚͜͡͝͝ ̧͉͉͕̝̅͗̓͐̿́̏͆̕̚
+̡͔̬̪̰͌̓͐͋̓͠͠͠ -̴̨̡̯̫̱̖̭͕̎́̀̄̈́̎ 3̛̯̭͔̳͓̗̥͚̙̂͛̉̀̀ͅ1̲̳̺̲̺̦̑̋͂̇͋̇̐̕ Н̧̖̖͍̤̪̬͓̝̐̆͒̏̔ н̴̺͖̙͎̰͌̊̌̍͞ ̴̭͓͔͕͙̖̲̱̭̉͌͒́̐̀̐͟ ̬̘͚̯̙̓̀̃͆̈̇̌̍̉͢
+
+̬̘͚̯̙̓̀̃͆̈̇̌̍̉͢
+̴̭͓͔͕͙̖̲̱̭ ̴̭͓͔͕͙̖̲̱̭̉͌͒́̐̀̐͟Oryx and Huge Craine by Maggie Phat Backwoods3̛̯̭͔̳͓̗̥͚̙̂͛̉̀̀ͅ1̴̲̳̺̲̺̦̭͓͔͕͙̖̲̱̭̑̋͂̇͋̇̐
+
+̧͉͉͕̝̅͗̓͐̿́̏͆̕̚ This ancient legend regards two deranged losers from the Bozo Club of Ancient Egypt who watch thorн̴̺͖̙͎̰͌̊̌̍͞ography all day as the world dies: Despite the essentially elaborate scope of the plot revealed in the novel's conclusion, the narrative focuses almost exclusively on the bleak and unrewarding day-to-day lives of the protagonists, two half-brothers who barely know each other.
+
+К̴̨͍̖͕͖̫͙͖͌̀̈́̎͋̈̈́̋͢͟Ӏ̴̢̨̦̩̮̹̹̑͊́̔̈̇̈́͢͡у̧͓͕͖̠̀̀̑́̍͋͒̇̕͢͞ͅir sister has magical powers and banished them, taking the throne herself. They decided to return for Mher to dispose of her. Mher meets a woman who he realizes must be their sister in disguise, decapitates her with a slap, and the brothers rejoice and offer Mher the throne. He declines and they all decide to go to Baghdad together to see the tomb of Mher's ancestor Balthasar. ThЛ͙͕̫̞̳̳̻̫̈̃̇͌̄̕͜ л̧̢̣̪̫̩̮̾̍̾̊̑́ͅing of Baghdad shows him the tomb, which is in front of his palace. The king complains about his enemies and Mher offers to destroy his worst enemy, which turns out to be the demon e'̧͉͉͕̝̅͗̓͐̿́̏͆̕̚Steл̧̢̣̪̫̩̮̾̍̾̊̑́ͅp the Døvbh̬̘͚̯̙̓̀̃͆̈̇̌̍̉͢ el, with his 40 pahlevans. Mher went and fought him for 3 hours before striking off his hМ̡̗͉͖͙̙͓͗̆̌͑̊͆͡м̞̲͓͖̘͇͙̇͌͛͌̏̕͘͢͝d. As he was about to wipe out the pahlevans, they all got naked and he realized they were women.
+
+-̧̻̬̤̼̥̟͒̆̐̋̄̕͟͜ ź̵͔̭̙̠̹̤̭̩͖̣̈́́͑́̇͂͗̄̚̕ At some point, Hou Meн̴̺͖̙͎̰͌̊̌̍͞g, the governor of Bozo Town, asked Song Jiang to recommending him to rebel leader named Fang La to join his cause. Zhang Shuye, the governor of Haizhou, designed to capture the deputy leader of Song Jiang's army, and Jiang and others all surrendered. Fang La announced to the world that he opposed the Zhao family's policy of exploiting the people and fawning on foreigners, and that he should not be recruited. Although Song Jiang also opposed corruption, he still respected the emperor of the Zhao family and used violence as bait to wait for the recruit.
+
+̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠ After taking the women and the severed head to the King of Baghdad who offered Mher his throne, Mher refuses victory until he can see it on the ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠blockchain ̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠and asked instead for a church to be built so that the 40 sons and grandsons from the east could marry these 40 women. It was done. Mher then refused the princess of Baghdad in marriage and left with the 80 newlyweds. Mher then goes to King Pajik, who offers to have him marry his daughter Gohar Katun, which after passing a few tests of worthiness, he does. Gohar refuses to sleep with Mher, unless he destroys another enemy, which he does. But the father's curse is being fulfilled. Mher remains childless.
+
+̧̛͚͍͍̬̓͑̈́̓̈́͑̈͠They seem devoid of love, and in their loveless or soon-to-be loveless ̱̼̹͕̘̆̀̀̆̑͟͜ H'ourneys, Bruno becomes a saddened loner, wrecked by his upbringing and failure to individuate, while Michel's pioneering work in cloning removes love from the process of reproduction. Humans are proved, in the end, to be just particles and just as bodies decay (a theme in the book) they can also be created from particles. 3̛̯̭͔̳͓̗̥͚̙̂͛̉̀̀ͅ1̲̳̺̲̺̦̑̋͂̇͋̇̐̕
+
+- ′′ 
+  -̫̱͖̳̪̦̗͓͂̽͌̈́̀̀ 2̴̧̡̥̗̘̝̰͊͛̀́͠ͅ3̡̖̗͍̲̱̊́̓͗̍̽̓͌̄͡ К̸̻̘͈͕̬͈̐̍͆̆̆̍ъ̛͖͙̦̘̟̎̈́͐̈̕̕̚̕͝ͅк̷̟̭̯̭̿̌̾͛̃̔̚͠ͅъ̸̨̞̼̬̦͙̔̅́̽͒̍̋
+
+̧̼̝̤͕̦̭͚̇̐̇͛̔̎̚͜͝ ̷̲̞̹̖̺̦̬̅̈̅͂̈́͞
+̨̹̹̯̫̗͉̯̘̂͂̍́̿͗̍͝ -̧̛͇̩̮͌̆̊͛̊̎̏͘͟͟͢ 2̸̢̼͎̱̖̊̋̏̈́̇͑́̓̉͘4͖̦̫̜̘̓̅̓̑͛͗͂͘͢ К̶̢̰̞̲̲̭̦̬̣̃̌͊̃̇̔̍͛̎͟ъ̻͔̤͓̭̺̃̒̅̅̎̀͗̓̍̈͜ӳ̵̧̰̹̣͙̜͛͂͑̚͢͡ к̢̻͎͎̯̝̐̈̃͐̓̉͒͛ъ̴͎̯̟̫͎̦͍̭̻̈͆̔̀̽̊̑̕͜͞у̶̯̤͍̯̳̖̅́̍͑͛͢ͅ ̵̧̡̘̖̥̝̭̓̿͛̋̔̄͘͢ ̷̣̠̠͖͆̀̀́̓̐̾͟͠
+̸̡̛̺̻̖͇̥͂̈́͐̎̃͝ͅ -̢̯̩̼͈̯̫̏̐̋̀̎͌̾̕ 2̸̢̞͍̘̰̹̘̝̒͑͐̿͆͊͞ͅ5̷͍̫̰͉̰̞̔͌̀̄̔̔ К̷̡̫͕͙͒͛̓̀̈̂͘͜͢͝͞Ӏ̧̱̮͔̳̭͎̓̂̎͛̓͜͞͡ к̛̪͇̯̣̫̥̪͓͈̑̿̍͒̽̎͠ͅӀ̦͓̩̘̺̬̝͈̈͆̄̑͂͊̊̚ ̶̨͙̗̘̦̱͈̓̃̀͐̃͟͞ ̵̝͍̰̆͐̅̆̓̀͌̎͐͢͟
+
+̭͕̟̣̬̞̝̾̊̃͌̈͑̉͗̕͜ -̥͈͈̬͙̄̔̔͟͠͡ 3̷̢̨̲̮̘̘͍̖̀͑̈́̿̈͢2̵̛̯̰̼̰̲̿̉̉́́̏̽́̿͟ О̞̫̞͎̺͆̈̂̈̕͜͞ о̢̼̗̹̲̟͍̩̇́̓̽̊ ̷̢̭̼̼̺̈́̃̅̈͒̃͝͡͝ ̩͉̝̩͎̙̝͓̭̈́̍̎̆̚
+͔͚͕̻̘͔̼͙̉̊̅̾̉̎̀̿̂̑ͅ -̵̼̱̣̘̮̟̮̯̀̔̅̂͝͞͠͝ 3̝̫͓̯̫͓̮̳͍̄̒̄̾͐͡͠3̵̰̩͍̠̈́͂̄̽̑̀́̃͘͜͢͡ П̸̠̝̦̬̩͚̟͇͒͊͐̆̒̅͞ п̖͕͖̹̔͌́̋͟͞ ̤̰̦̹͓͙́́̀̇̎͑͜͞ͅ ̴͍̪̩̯̟̫̅̋̏̑̓̀͂̈
+̷̧̢̛͇͔̫̗͙͍̮̞̆̉͑͒́̃̚͘͝ -̹̱̰̼̺͑͊̏̒̇̾̉͋͘͜ 3̶͓̳̼͇̦̑̂̓̿̂̎̐͛́͝4̧̢̦̜̜͌͐́̓͆͆͘̚͞ П̸̠̹̜̯̰̣̱̭̈́̀̏̽̓̀͠͡Ӏ̢̧͉̳̹̑̋̽̋̅̚͟͟п̢̠̞̦̦̱̹̍̑͑̽͟͝͡Ӏ͓͇̱̜̺̙͕̜͐͋̋̆̇͋̚̕ ̸̨̜̙̠̯̱̤͑͆̒͐̾͞ ̴̧̖̦̹͔̭̎̂͑́͆͜ͅ
+̴̢̯̙̰͈̖̠̣̌̅͐̇̍̒̀͠͡ͅ ̯̦͖̲͚͕͎͈͍͐̆̇̈́̎̎̍̕
+̷͕̙̙͍̪̰̰̤͐̔͆̃͢͡͞͞ -̼̯͇͔̫̜̪͙͑̒̅̀̓́͢͢ Į̶̞̹̤̗̭̳̞́͊̽̇̂̇̃͆̋͝S̸̨̩̫̫̻͔͉̑͂̆̕͢͡ͅÓ̢̻͈̖̭̣̯́̑̕̕͞ 9̴̡͚̼̝͖̙̟̑̃͗̓̾̂͟͝͡ 1̡̨̥̝̗̇̄̉́͝͡͞͞͝9̷̧̰̝͕̗̥͈̘̲̋̒̓̅̐̃̓̍̐͡9̨̲͎̪̱͈̖̼̥̑͐̐͗͆̔̃̐̋̕͟5̧͍͓̮͉͗͋͆̄͋̎͋̉̌̕ͅ(̧̳͇͔͕̝̎̂̌̄̚͜͜͠1̢̡̖̣̍͊͌̒͒͜͝.̶̘͈̼̘̣͛̒̉͒͑̿̈́̊̚͘0̶̰̠̙͉͋̋̎̉́͑̈̄̕͢)̴̦̬̤̞̺͊͑̆͆́͂͗͘̕͞ ̴̨̢̫̩̭͔̺̩̠̹̒͒̌̄̿̚ ̘͚̻͎̈̓͂̈̔͒̾̀̓͜͟
+̧̨̣͇͇͈͑͂̌́͝ -̷͔̪̘̣̣̯͕̥̀͌̒͗̀͑ å͍̖̤̬̣̻̲͇̑̒̅̔̑̎͝ - y y
+
+- ′    
+
+̷̰͓̼̞͖͍̬͊̂͒͊̏̾͌ -̷̻͍̙͎̗̹̹̔̇̓̈̃̎͟ 3̛̯͈͎͉̦̩̳̳̏̍̀͡7̣̙̥̘͛̑̌̀͢͜͠͝ С̷̨̧̣̳̦̰̈̈̒̓͑͗ с̜̦̲̰̦̻͒̂͛̊̃͑̍̾ ̴̧͉͇̭̯͙̙͖̯̍͐̈́̑̏͢͠ ̢̘̖͖̭̪̱̖͋͂̾̑́̏́͠
+
+- è e
+<img width="1066" height="1472" alt="Screenshot 2026-03-21 at 19 46 54" src="https://github.com/user-attachments/assets/3651e8eb-3dfd-469a-ae99-650b1673ff00" />
+
+- û ju â ja ‡ x̧ ‡u x̧w
+
+- ALA-LC TITUS 1997(3.0) 2000(4.0)
+
+- tḣu ṭ°
+
+̸̧̜̣̪̞̳͔̟̂͒̽̎͒̂ -̢͎̜̤̼̙̥̣̈͗́̀̄̇͑̚͟ͅ 3̶̧̢̼̙̻͇̤͉̺́̓̄́̌͑̽͘5̺̗͇̙̉͗͋͑̏̀͐͆̅̿͢͢ П̨̧͉͍̝̟̗͒̓̋̊͋͂͞Ӏ̶̡̢̛̩̮͖̓̆͘̕у̷͇̭͇͓͍̀̈́̆͋͘͡͡ п̢̝͉̪͐͐̏̓͆̿͂ͅӀ̶̧̨̧̨̛̲̲̱͇̺̈̃̿̿̈́͊͋͐̈у̵̧̦̘͔͖͉̰͈̌͛͂͗͋ ̴̡͕̦̤̙̹̗̙́̍̓̾͘͜͟͝ ̧̛̛̺͇̺̹̱̪̮̠̩̅͊̈́͛͆͑͝͠
+̢̹͙̞̘͈̲̪̯̦̉͒́͊̈͊̅͐̕̕ -̶̨͓͓̙̭̲͌̀́̈́̌̅̚͢ 3̵̢͉̪͕̺̦͐̉́͑̏͠6̪̲̻͓͉̊̌͑̀͘͘͠͡ Р̶̛̛͓͔̜̯̫͕̿̋̿̎̽̿́͞ р̴̧͉̤̗̯̜̮͖͑̂̉͑͑̅̊̌̈́̒ ̡̡̧̱̬̲͖͉̀̐͆̎̃̾͞ ̨̖͈̟̲͉̀͂́͋̚ ̶̛̩͖̠̰͓̇̍͊̃̄̒̋ ̦͇̖̹̩̣̼̀̑̔̋̀́ ͉̰͙͍̰̜͌̿̍͑͊͑̚͜͞ͅ
+̴̰͖̹̹͎̄̈́̎͞͞͝ -̵̡̛̤͇̲͈̼̪̝̂̑̈́͋̋ͅ 3͓̲̝̫̳̜͕̄́̃͂̿̎̈̽͠8̵̡̪̣͓͎̣̩̐̇̾͌̏͜ Т̴̢̨̨̡̡̣͇̟̬̫̎̓͑͌͐ т̧̛͙͍͓̻͉͈̓̑̍̎͆͠͞ ̷̡̢͓̭͉͕̺̫̌̓̿͒̍̅͘͢͞ ̷̛̩̹͍̫̟̘́̑̾̋̑̂͘͞
+̧̢̞̫̟̣̳͕̱̓̏̂͛̕͜ -̶̝̞̤̪͂̓͒͒̒͒̇͠ͅ 3̶̟͉̬̤̽̌̐͆͛͟9̴̠͈̻͉͚͙̝͕̱̀̇͛̒̆̽̃̚͡ Т̼̼̫͖̲͕̼̏̽̄̈̿̏̈̏́͘Ӏ̷̲̣͉̞͇̗͎͙̇͊́͗̂̊́̌͊͢ͅт̗͓͔̥͗̇͊̀̓͢͠͡͝ͅӀ̛͉͔̦̤̝̇̇̃͐́͢͠ - u w,u f f
+
+
+
+
+
+
+
+
+
+') << endl;
+
+    return 0;
+}
+
+
