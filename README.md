@@ -187,6 +187,17 @@ variable	  	/var/mail	             	/var/run
 <img width="1245" height="1183" alt="Screenshot 2026-04-17 at 08 24 22" src="https://github.com/user-attachments/assets/bb91fa7b-58b1-4005-9ec3-88c38ec2bfad" />
 
 
+Ladder Delta Theory / Logistic Regression for Memory Fitting (change in mx = ab + y)
+
+```
+offset + size - 1 <= limit
+
+effective_address_a = global_base_b + index_i * scale_j + displacement_delta
+
+linear_address_lm = segment_base_mb + effective_address_a
+
+
+```
 
 
 
