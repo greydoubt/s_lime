@@ -474,6 +474,22 @@ load_memory (SIM_DESC SD,
 ```
 
 
+ADD [BX+4], 8:
+```
+; ADD/OR/ADC/SBB/AND/SUB/XOR m,i
+039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
+03A                                               DLY
+03B  OPR_R  -> TMPB    WRITE_RESULT   JMP         UNL
+03C  TMPB              IMM            +-&|^
+
+; WRITE_RESULT
+046  RES  -> OPR_W                          RNI     WR   0
+047                                               DLY
+
+```
+
+
+
 
 
 
@@ -523,12 +539,40 @@ assert(p1ar != NULL); uint64_t i = (char*)p1 - p1ar->visible_bytes; assert(i < p
 
 ```
 
+
+
 Furthermore, if there is a pointer at visible_bytes + i, then its accompanying AllocationRecord* is at invisible_bytes + i, then we must deal with this hot clopper where a pointer re-allocates its records to a new pointer address offset by its new location :
 ```
 	p2 = *p1;
   ...
   *p1 = p2;
 ```
+
+
+
+
+
+MOV AX, 123h
+ADD [AX+45h], 2
+```
+Its microcode in execution order is:
+
+; MOV r,i
+005  IMM                              PASS    RNI
+006  SIGMA  -> DSTREG
+
+; ADD m,i
+039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
+03A                                               DLY
+03B  OPR_R  -> TMPB    WRITE_RESULT   JMP         UNL
+...
+
+
+
+<img width="557" height="262" alt="segment_00a" src="https://github.com/user-attachments/assets/90d41fd0-8316-4b37-9c16-91dc7d92ab67" />
+
+
+
 Derenders (Refactors is a De-render of an optimised local solid blob then sent to gobugobu(freier) inside garbler for containment of turkey image gobu gobu(&), aka the clopper then evolves and devolves and foams into an artifice called a Clogger:
 
 
