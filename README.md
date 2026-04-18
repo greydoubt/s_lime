@@ -350,6 +350,17 @@ It is not possible to log in as root
 Memory Aliasation for Threading Streams using Function Pointers
 ===================================
 
+
+
+Real-mode MOV:
+```
+; r MOV ES/SS/DS/FS/GS,rw
+009  DSTREG    DES_SR                 PASS    RnI DLY SBRM 0
+00A  SIGMA  -> SEGREG
+```
+
+
+
 The default rewriting of a pointer load or store is to two loads or stores, which requires Quantum in order to replace the now-assumed-broken atomicity. Atomicity means freeing memory really does free memory rather than just unlink a node from the rest of the list; another graph still presumably may include that node and therefore the system has global inconsistency from just 1,3 Ramsey
 
 
@@ -373,6 +384,15 @@ The default rewriting of a pointer load or store is to two loads or stores, whic
 
 
 
+protected-mode MOV
+```
+; p MOV ES/DS/FS/GS,rw
+580            DES_SR  TST_DES_SIMPLE PTSAV1      DLY SPTR 0
+581                    LD_DESCRIPTOR  LCALL
+582  DSTREG -> SLCTR   TST_SEL_NONSS  PTSELE      DLY
+583  SLCTR2 -> SEGREG  TMPC                   RNI     SDEL
+584                                               DLY
+```
 
 
 When weaving pointers, allocate using a mezzanine memory layer as such:
@@ -483,7 +503,7 @@ ADD [BX+4], 8:
 03C  TMPB              IMM            +-&|^
 
 ; WRITE_RESULT
-046  RES  -> OPR_W                          RNI     WR   0
+046  RESREG  -> OPR_W                          RNI     WR   0
 047                                               DLY
 
 ```
@@ -559,7 +579,7 @@ Its microcode in execution order is:
 
 ; MOV r,i
 005  IMM                              PASS    RNI
-006  SIGMA  -> DSTREG
+006  RESREG  -> DSTREG
 
 ; ADD m,i
 039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
