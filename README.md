@@ -32,7 +32,7 @@ type:*BadInitClassSubstring*=init
 src:bad/init/files/*=init
 
 
-
+```
              xxxxxxxxxxxxxxxxxxxxxxxxxxxx
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     __
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx// \
@@ -50,7 +50,7 @@ rrr          wwwww  .....                      ====...
   rrr
    'rr._
      ''rrrrrrrrrrrrrrrr
-
+```
 
 
 
