@@ -340,6 +340,9 @@ It is not possible to log in as root
 
 
 
+
+
+
 ####
 
 
@@ -361,6 +364,16 @@ The default rewriting of a pointer load or store is to two loads or stores, whic
     } while (0)
 
 ```
+
+
+
+
+<img width="1151" height="492" alt="Screenshot 2026-04-18 at 08 40" src="https://github.com/user-attachments/assets/92bd9cdb-0bb1-45bd-a1f5-c9be9b68270a" />
+
+
+
+
+
 
 When weaving pointers, allocate using a mezzanine memory layer as such:
 
