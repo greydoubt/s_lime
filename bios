@@ -38,24 +38,50 @@ FIND LAMBDA(7IGMA)
         JMP     K16
 .LIST
 
-; r MOV ES/SS/DS/FS/GS,rw
+r MOV ES/SS/DS/FS/GS,rw
 009  DSTREG    DES_SR                 PASS    RnI DLY SBRM 0
 00A  SIGMA  -> SEGREG
 
-; p MOV ES/DS/FS/GS,rw
+p MOV ES/DS/FS/GS,rw
 580            DES_SR  TST_DES_SIMPLE PTSAV1      DLY SPTR 0
 581                    LD_DESCRIPTOR  LCALL
 582  DSTREG -> SLCTR   TST_SEL_NONSS  PTSELE      DLY
 583  SLCTR2 -> SEGREG  TMPC                   RNI     SDEL
 584                                               DLY
 
-; MOV r,i
+q MOV r,i
 005  IMM                              PASS    RNI
 006  SIGMA  -> DSTREG
 ; ADD m,i
 039  EFLAGS -> FLAGSB                 FLGSBA          RD   9
 03A                                               DLY
-...
+
+             xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     __
+        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx// \
+       xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx((_  )x
+      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_xxxxx
+     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx(o)xxxxxxx
+    rrxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxo
+   rrrxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/|\xx/
+  rrrrxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx__/x| \
+ rrr   xwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+rrr      wwwxxxxxxxxx ..                    xwwww...
+rrr        wwwxxxxxxx .                       www ..
+rrr          wwwww  .....                      ====...
+ rrr          =========
+  rrr
+   'rr._
+     ''rrrrrrrrrrrrrrrr
+
+
+
+
+
+
+
+
+
 
 # Suppress error reports for code in a file or in a function:
 src:bad_file.cpp
