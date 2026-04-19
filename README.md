@@ -337,6 +337,14 @@ Note: You can use other tools, e.g. gparted on third-party Linux
       systems to make necessary changes.
 
 
+
+<img width="1587" height="705" alt="Screenshot 2026-04-19 at 08 09 46" src="https://github.com/user-attachments/assets/3a9fe1a3-45f8-4734-9035-891b3ff31da6" />
+
+
+
+
+
+
 Boot codes
 ==========
 
