@@ -1,0 +1,24 @@
+16 XNA possible FP4 numbers as a truth table, therefore XNU SAT CHECK SET - ; verified in advance as NP-Hard Space Topology
+
+
+MOV ; Here is a table for 4-tuple Floating Point E2M1 format.
+BIT ..s exp m  VAL
+-------------------
+0000 0  00 0     +0
+0001 0  00 1   +0.5
+0010 0  01 0     +1
+0011 0  01 1   +1.5
+0100 0  10 0     +2
+0101 0  10 1     +3
+0110 0  11 0     +4
+0111 0  11 1     +6
+1000 1  00 0     -0
+1001 1  00 1   -0.5
+1010 1  01 0     -1
+1011 1  01 1   -1.5
+1100 1  10 0     -2
+1101 1  10 1     -3
+1110 1  11 0     -4
+1111 1  11 1     -6
+
+TWO ZER 0s ASM PRC ; two zeros, +0 and −0, otherwise still uses 'one zero' instead of 'negative zero' modality two's compliment
