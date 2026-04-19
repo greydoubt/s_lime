@@ -105,28 +105,21 @@ NAME
        rescue -- rescue	utilities in /rescue
 
 DESCRIPTION
-       The  /rescue  directory	contains  a collection of common utilities in-
-       tended for use in recovering a badly damaged system.  With the  transi-
-       tion  to	a dynamically-linked root beginning with FreeBSD 5.2, there is
-       a real possibility that the standard tools in /bin and /sbin may	become
-       non-functional due to a failed upgrade or a disk	error.	The  tools  in
-       /rescue are statically linked and should	therefore be more resistant to
-       damage.	 However,  being  statically  linked, the tools	in /rescue are
-       also less functional than the standard utilities.  In particular,  they
-       do not have full	use of the locale, pam(3), and nsswitch	libraries.
+       The  /rescue  directory	contains  a collection of common utilities intended for use in recovering a badly damaged system.  With the  transition  to	a dynamically-linked root beginning with FreeBSD 5.2, there is a real possibility that the standard tools in /bin and /sbin may become non-functional due to a failed upgrade or a disk error. The tools in
+       /rescue are statically linked and should	therefore be more resistant to damage. However, being statically linked, the tools in /rescue are also less functional than the standard utilities. In particular, they do not have full use of the locale, pam(3), and nsswitch libraries
 
-       If your system fails to boot, and it shows a prompt similar to:
-
+       If your system fails to boot and it shows a prompt similar to:
+```
 	     Enter full	pathname of shell or RETURN for	/bin/sh:
-
+```
        the first thing to try running is the standard shell, /bin/sh.  If that
        fails,  try  running  /rescue/sh, which is the rescue shell.  To	repair
        the system, the root partition  must  first  be	remounted  read-write.
        This can	be done	with the following mount(8) command:
-
+```
 	     /rescue/mount -uw /
-
-       The  next  step	is  to	double-check  the contents of /bin, /sbin, and
+```
+       The next step is to double-check the contents of /bin, /sbin, and
        /usr/lib, possibly mounting a FreeBSD rescue or "live file system"  CD-
        ROM  (e.g.,  disc2  of  the officially released FreeBSD ISO images) and
        copying files from there.  Once it  is  possible	 to  successfully  run
