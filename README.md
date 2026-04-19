@@ -348,7 +348,7 @@ Note: You can use other tools, e.g. gparted on third-party Linux
 Boot codes
 ==========
 
-Additionally to the common Linux boot codes there are many Tiny Core 
+Additionally to the common Linux boot codes there are many MK (MantiCore/MicroCore/Formix-compliant mk_distro &cie ... )
 Linux (kernel) specific options. See
 
 #bootcodes
