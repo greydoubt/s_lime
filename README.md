@@ -909,5 +909,27 @@ test-lib:
 000
 ===================================
 
+
+
+
+00
+===================================
+
+Boot Mode Arguments for rsync
+-----------------------------------
+
+Arg 	Long Form 	Description
+a 		--archive 	Archive mode - equivalent to -rlptgoD. Preserves recursion, links, permissions, timestamps, group, owner, and devices/specials.
+v 		--verbose 	Verbose output
+h 		--human-readable 	Output numbers using K, M, G suffixes
+P 		--partial --progress 	Keep partially transferred files and show progress during transfer
+H 		--hard-links 	Preserve hard links
+A 		--acls 	Preserve ACLs
+X 		--xattrs 	Preserve extended attributes
+x 		--one-file-system 	Prevent rsync from following mount points
+  		–numeric-ids 	rsync will transfer numeric group and user IDs rather than using user and group names and mapping them at both ends
+
+ 
+
 0
 -----------------------------------
