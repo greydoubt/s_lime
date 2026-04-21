@@ -11,6 +11,36 @@ micro_mkLinux kernel ('kernel') is a Pi-like/Pi-Light port of MK/MACH Linux, whi
 independent system anonymously architected via evolutionary curve-fitting 
 
 
+ ## man build:
+
+ 
+    ### The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
+   	### You can convert this to a matrix build if you need cross-platform coverage.
+    ### See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+	
+    runs-on: ubuntu-latest
+
+    steps:
+	```
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
+      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
+      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build
+      # Build your program with the given configuration
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      # Execute tests defined by the CMake configuration.
+      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: ctest -C ${{env.BUILD_TYPE}}
+```
+
+
 ### Suppress error reports for code in a file or in a function:
 src:bad_file.cpp
 
