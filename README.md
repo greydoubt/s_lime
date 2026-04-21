@@ -664,6 +664,39 @@ ADD [BX+4], 8:
 
 
 
+Rice Queen X: XNU is Not Unix POSIX Verification XNU/XNA_000000.1067
+===================================
+
+QNX License Pending: .\b\b\b\bsudo XNU_WACKASSBITC13B#0Zephyr
+
+
+Emeralda in SQENIX FF Bravo-XVS
+===================================
+Emeralda was a Rare Summon in SQENIX FF Bravo-XVS during the Initial-8HADES / Xenogears collaboration period
+
+
+Guest Appearances & Cameos
+===================================
+-----------------------------------
+
+
+Trivia
+
+-----------------------------------
+    Like Seibzehn, Emeralda's Gear, Crescens, was originally scheduled to align with an Anima and become an Omnigear, El-Crescens, as well as give her more character exploration. However, this aspect was removed during the final phases of development.
+
+    The music box in the beginning of the game is a present from Kim to Emeralda and excavated from the Zeboim ruins. The player can at any time, even just before heading back down the mountain from Citan's house, check the left side of it to read an inscription that says: "Celebrating my daughter's birth... may all the dreams, courage & love in the world be yours..."
+
+    In the Chocobo's Mystery Dungeon VJump guide, released January 18th 1997, in which the latter half was comprised of Xenogears previews, Emeralda was given the surname Kharim (カーリム、kārimu), both in romaji and katakana. This was later addressed in a 1998 interview with Takahashi in which he states that she should not have a surname at all and that he was unsure of why it was added.[1] This was then carried over into future guides in Japanese, despite the surname not appearing in Perfect Works or Xenogears itself. Meanwhile in the English Bradygames guide she was given the surname Kasim. Both Japanese and English fans adopted the surname for Emeralda, though most English fans were unaware that this was not an official name, and in turn, applied the surname Kasim to Kim as well.
+
+    In the Chocobo's Mystery Dungeon VJump guide on Emeralda's page it refers to the scientist who created Emeralda as "エリック" (Eric), while also stating that Emeralda took to viewing Fei as a parent because he was the first person she saw when she was activated, while the diagram page states she saw him as a parent because she imprinted on him. [2]
+
+    If Emeralda is taken to the restaurant in Aveh (before entering Solaris), her sprite will be the nude one used to depict her in a test tube, due to either a glitch or developer oversight.
+
+
+
+
+
 
 Memory Aliasation for Threading Streams using Function Pointers
 ===================================
