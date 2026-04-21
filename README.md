@@ -581,8 +581,68 @@ Using config(8) to Change Kernel Options
 ----------------
 Invoking config(8) with the -e flag allows you to enter the UKC on a running system. 
 
+config — build kernel compilation directories or modify a kernel
+SYNOPSIS
+config 	[-p] [-b builddir] [-s srcdir] [config-file]
+
+config 	-e [-u] [-c cmdfile] [-f | -o outfile] infile
+
+For kernel building, the options are as follows:
+```
+-b builddir
+    Create the build directory in the path specified by builddir instead of the default ../compile/SYSTEMNAME.
+	
+-p
+    Configure for a system that includes profiling code; see kgmon(8) and gprof(1). When this option is specified, config acts as if the lines “makeoptions PROF="-pg"” and “option GPROF” appeared in the specified kernel configuration file. In addition, “.PROF” is appended to the default compilation directory name.
+
+    The -p flag is expected to be used for “one-shot” profiles of existing systems; for regular profiling, it is probably wiser to make a separate configuration containing the makeoptions line.
+	
+-s srcdir
+    Use srcdir as the top-level kernel source directory instead of the default (four directories above the build directory).
+
+For kernel modification, the options are as follows:
+
+-c cmdfile
+    Read commands and answers from the specified file instead of the standard input. Save and quit automatically when the end of file is reached.
+-e
+    Allows the modification of kernel device configuration (see boot_config(8)). Temporary changes can be made to the running kernel's configuration or a new kernel binary may be written for permanent changes between system reboots. See the section KERNEL MODIFICATION below for more details.
+-f
+    Overwrite the infile kernel binary with the modified kernel. Otherwise, -o should be given to specify an alternate output file.
+-o outfile
+    Write the modified kernel to outfile.
+-u
+    Check to see if the kernel configuration was modified at boot-time (i.e. boot -c was used). If so, compare the running kernel with the kernel to be edited (infile). If they seem to be the same, apply all configuration changes performed at boot. Using this option requires read access to /dev/mem, which may be restricted based upon the value of the kern.allowkmem sysctl(8). 
+```
 
 Any changes made will then take effect on the next reboot. 
+
+
+Change Kernel Options for Generic Formix-Compliant Configuration (Citrix Zero Layer)
+----------------
+
+Compliant Configuration files consisting of various statements which include the following:
+machine var
+    Required. Specifies the machine architecture.
+	
+include file
+    Include another configuration file.
+	
+option name
+    Set a kernel option. Kernel options may take either the form NAME or the form NAME=value. These options are passed to the compiler with the -D flag.
+	
+rmoption name
+    Delete a previously set option. This is useful when including another kernel configuration file. A typical use is to include the GENERIC kernel provided with each release and remove options that are unwanted, thus allowing for automatic inclusion of new device drivers.
+	
+maxusers number
+    Required. Used to size various system tables and maximum operating conditions in an approximate fashion. Multiple instances of this keyword may be specified. The number provided in the last instance will be used, and warnings will be printed for each duplicate value. This is convenient when used with the include directive.
+	
+config bsd root on dev [swap on dev [and dev ...]] [dumps on dev]
+    Required. Specifies the swap and dump devices which the system should use.
+	
+config bsd swap generic
+    Otherwise, if generic is specified, the system follows generic routines to decide what should happen.
+
+To debug kernels and their crash dumps with gdb, add “makeoptions DEBUG="-g"” to the kernel configuration file. Refer to options(4) for further details.
 
 
 The -u flag tests to see if any changes were made to the running kernel during boot, meaning you used boot -c to enter the UKC while booting the system.
