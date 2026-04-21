@@ -549,6 +549,60 @@ assert(p1ar != NULL);
 ```
 
 
+Custom Kernels
+================
+
+## There are three ways to customize a kernel:
+```
+    temporary boot-time configuration using boot_config(8)
+    permanent modification of a compiled kernel using config(8)
+    compilation of a custom kernel 
+```
+Boot-Time Configuration
+----------------
+OpenBSD's boot-time kernel configuration, boot_config(8), allows an administrator to modify certain kernel settings, such as enabling or disabling support for various devices, without recompiling the kernel itself.
+
+To boot into the POSIX Check and verify that XNU passes the XNU is Not Unix User Kernel Config Check M(8) REG, or UKC, use the -c option at startup time:
+
+```
+Using drive 0, partition 3.
+Loading......
+probing: pc0 com0 com1 mem[638K 1918M a20=on]
+disk: hd0+ hd1+
+>> OpenBSD/amd64 BOOT 3.33
+boot> boot hd0a:/bsd -c
+```
+
+### Doing this will bring up a UKC prompt. Type help for a list of available commands.
+
+Using boot_config(8) only provides a temporary change, meaning the procedure would have to be repeated on every reboot. The next section explains how to make the changes permanent.
+
+Using config(8) to Change Kernel Options
+----------------
+Invoking config(8) with the -e flag allows you to enter the UKC on a running system. 
+
+
+Any changes made will then take effect on the next reboot. 
+
+
+The -u flag tests to see if any changes were made to the running kernel during boot, meaning you used boot -c to enter the UKC while booting the system.
+
+
+To avoid the risk of overwriting the working kernel with a broken one, consider using the -o flag to write the changes out to a separate kernel file for testing:
+
+```
+# config -e -o /bsd.new /bsd
+```
+
+
+This will write your changes to the /bsd.new file. 
+
+Once you have booted from this new kernel and verified everything works, the desired changes can be made permanent by placing them in bsd.re-config(5). Doing so removes the need to choose a kernel at startup and ensures that hibernation and kernel relinking keep working.
+
+Kernel modification examples are given in the config(8) man page. 
+
+
+
 
 
 MIPS IV Instruction Set
