@@ -1,0 +1,5 @@
+           group     wheel
+           base_dir  /home/
+           skel_dir  /etc/skel
+           shell     /bin/sh
+           inactive  0
