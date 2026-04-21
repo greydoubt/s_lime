@@ -7,8 +7,19 @@
 	                               Introduction
                                ============
 
-micro_mkLinux kernel ('kernel') is a Pi-like/Pi-Light port of MK/MACH Linux, which is an 
-independent system anonymously architected via evolutionary curve-fitting 
+micro_mkLinux kernel ('kernel') is a Level_0 POSIX-Cømpliant *BSD distro that vampires into
+a FreeBSD/OpenBSD/NetBSD shiv-installer to allow and control 
+arbtirary and platform-neutral Pi-like/Pi-Light ports of MK/MACH Linux
+which itself consists of an independent system fully anonymously deployed
+and architected via evolutionary curve-fitting algorithms using the XNU Kernel
+
+
+$ cd /usr/src
+$ find . -type l -name obj -delete
+$ make cleandir
+$ rm -rf /usr/obj/*
+$ make obj
+
 
 
 ## $name: C/C++ Blue Prints for Good Times
