@@ -4,8 +4,8 @@
 				Retrofitting JIT Compilers into C Interpreters 
 			and boot them as Operating System Kernels (BIOS -1.0113)
 
-	                               Introduction
-                               ============
+	                            			   Introduction
+         ============#    gcc: Internal compiler error: program cc1 got fatal signal 11       #============ 
 
 micro_mkLinux kernel ('kernel') is a Level_0 POSIX-Cømpliant *BSD distro that vampires into
 a FreeBSD/OpenBSD/NetBSD shiv-installer to allow and control 
