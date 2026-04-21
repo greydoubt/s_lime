@@ -1,1 +1,5 @@
-
+$ cd /usr/src
+$ find . -type l -name obj -delete
+$ make cleandir
+$ rm -rf /usr/obj/*
+$ make obj
