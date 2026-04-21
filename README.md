@@ -1150,24 +1150,19 @@ x 		--one-file-system 	Prevent rsync from following mount points
 
 0
 -----------------------------------
-```
-Need more help?
 
+Need more help? Battletoads got you Down????
+===================================
+```
 Just Dial the Phone Losers of America!
-
-PhfreakBeastBSD, L`OpenBSD, and their Sister, ANetBSD!
-
-The Phone Losers of America! They Have Big Stupid Phones!!!! The Phone LOOOOOssssserz of America!!!!! Install BSD Today!
-
-
-```
-
 
 <img width="950" height="935" alt="Screenshot 2026-04-21 at 15 47 08" src="https://github.com/user-attachments/assets/f5175613-9d37-459e-988e-a1349f02b3b9" />
 
+PhfreakBeastBSD, L`OpenBSD, and their Sister, ANetBSD!
 
 <img width="223" height="90" alt="Screenshot 2026-04-21 at 15 45 06" src="https://github.com/user-attachments/assets/596a3c34-6a66-46c4-aed5-3b6ac64a0570" />
 
+The Phone Losers of America! They Have Big Stupid Phones!!!! The Phone LOOOOOssssserz of America!!!!! Install BSD Today!
 
 <img width="110" height="48" alt="powered-by-NetBSD" src="https://github.com/user-attachments/assets/622698e3-5ee7-41b8-a72d-4b165473d0d6" />
 
