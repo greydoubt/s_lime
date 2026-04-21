@@ -11,6 +11,32 @@ micro_mkLinux kernel ('kernel') is a Pi-like/Pi-Light port of MK/MACH Linux, whi
 independent system anonymously architected via evolutionary curve-fitting 
 
 
+## $name: C/C++ Blue Prints for Good Times
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+    - name: make distcheck
+      run: make distcheck
+
+
+
  ## man build:
 
  
