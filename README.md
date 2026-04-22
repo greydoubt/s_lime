@@ -23,9 +23,9 @@ $ make obj
 
          ============#   how to install a real operating system    #============ 
 
-Firstly one must download the fucking file
+Firstly one must ... download the fucking file
 
-And then act as the Shah of Persia and do a check sum on that piece of shit to make sure the Tsar did not tamper with your whiskey
+And then act as the Shahan al-Shan bin JavaScript of Ancient Persia would and perform a check sum on that piece of shit to make sure the Tsar did not tamper with al-Gin:
 
 ```
 $ sha256 -C SHA256 miniroot*.img
@@ -37,12 +37,16 @@ Or, if you're using the GNU coreutils:
 $ sha256sum -c --ignore-missing SHA256
 miniroot78.img: OK
 ```
-However, this only checks for accidental corruption. You can use signify(1) and the SHA256.sig file to cryptographically verify the downloaded image.
+
+However, this only checks for accidental corruption aka "Good enough for the benchoades wanting to play my clown ass"
+
+You can use signify(1) and the SHA256.sig file to cryptographically verify the downloaded image:
 ```
 $ signify -Cp /etc/signify/openbsd-78-base.pub -x SHA256.sig miniroot*.img
 Signature Verified
 miniroot78.img: OK
 ```
+
 
 
 
