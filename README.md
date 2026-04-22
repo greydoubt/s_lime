@@ -395,6 +395,7 @@ specially on the micro-kernel or BIOS level
 
 
 Hardware Support for Virtual Machines
+-------------------------------------
 
 All VMs target a single standard and then translate to or write for ARM and AMD64 dually 
 
@@ -404,6 +405,10 @@ Some SoC models that do not work with the included U-Boot (such Raspberry Pi 400
 
 Most ARM systems (Apple M-Series, Raspberry Pi 400 etc) need to have a UEFI environment installed before OpenBSD can be booted, usually Asahi Linux or some EDK2-based UEFI does the trick!
 
+
+The F Word that Rhymes with Suck Duck
+-------------------------------------
+fsck(8): You can mount partitions that you never or rarely need to write to as readonly most of the time, which will eliminate the need for a filesystem check after a crash or power interruption
 
 
 ```
