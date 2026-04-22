@@ -160,6 +160,28 @@ rm -f /tmp/.dbgfile.$PID
 echo "Log written to: /tmp/gdb_log.$PID"
 ```
 
+x68 ASM
+=======
+```
+
+.  		xor eax, eax 		sub eax, eax
+OF 		clear 				clear
+SF 		clear 				clear
+ZF 		set 				set
+AF 		<undefined> 		clear
+PF 		set 				set
+CF 		clear 				clear
+
+
+```
+
+[XORE DIFFERENCE]
+
+xor eax, eax leave the AF flag undefined
+
+sub eax, eax alter the AF flag by clearing it
+
+
 
 
 
