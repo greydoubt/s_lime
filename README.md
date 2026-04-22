@@ -89,12 +89,16 @@ If your system supports serial access, modify the FreeBSD boot configuration bef
 
         echo 'console="comconsole"' >> /boot/loader.conf
 
+		
+
     Enable Serial Access in the Boot Menu
 
         When booting, interrupt the FreeBSD bootloader and type:
 
         set console=comconsole
         boot
+
+
 
     Set Up Baud Rate (Optional, for Legacy Systems)
 
@@ -104,29 +108,36 @@ If your system supports serial access, modify the FreeBSD boot configuration bef
 
         This ensures compatibility with 115200 baud rate for serial communication.
 
-Enabling SSH for Remote Installation
+
+## Enabling SSH for Remote Installation
 
 If using SSH, FreeBSD allows pre-configuring SSH access in the installation media:
 
-    Modify the Bootloader (For headless SSH setup)
 
+    Modify the Bootloader (For headless SSH setup)
+```
     echo 'sshd_enable="YES"' >> /etc/rc.conf
+```
 
     Set Up a Temporary Root Password
-
+```
     echo "root:yourpassword" | chpasswd
+```
 
     Find the IP Address After Booting
 
-        Use DHCP to get an IP address or set a static IP via:
-
+    Use DHCP to get an IP address or set a static IP via:
+```
         ifconfig em0 inet 192.168.1.100 netmask 255.255.255.0
+```
 
     Connect via SSH
-
+```
     ssh root@192.168.1.100
+```
 
-4. Running the FreeBSD Text-Based Installer
+
+## 4. Running the FreeBSD Text-Based Installer
 
 Once connected via SSH or serial console, proceed with the ncurses-based FreeBSD installer.
 Step 1: Select Install Mode
@@ -134,19 +145,19 @@ Step 1: Select Install Mode
     Choose “Install” from the main menu.
     Select keyboard layout (default is fine for most setups).
 
-Step 2: Partitioning the Disk
+### Step 2: Partitioning the Disk
 
 For headless servers, use Auto (UFS) or ZFS (for RAID setups).
 
     UFS (for simple setups)
     ZFS (for advanced RAID configurations)
 
-Step 3: Network Configuration
+### Step 3: Network Configuration
 
     Set up networking manually or via DHCP.
     Configure IPv4 and/or IPv6 settings.
 
-Step 4: Root Password and User Creation
+### Step 4: Root Password and User Creation
 
     Set a strong root password.
     Create an admin user (wheel group for sudo access).
@@ -160,36 +171,40 @@ Step 6: Post-Installation Configuration
 After installation:
 
     Enable SSH for remote access:
-
+```
     sysrc sshd_enable="YES"
+```
 
     Enable serial console permanently:
-
+```
     echo 'console="comconsole"' >> /boot/loader.conf
+```
 
-5. First Boot and Post-Installation Tasks
+## 5. First Boot and Post-Installation Tasks
 
 Once installation completes, reboot the system:
-
+```
 reboot
+```
 
 After booting, reconnect via SSH or serial console and:
 
-    Update the system:
-
+Update the system:
+```
     freebsd-update fetch install
     pkg update
+```
 
-    Configure firewall (optional):
-
+Configure firewall (optional):
+```
     sysrc firewall_enable="YES"
     sysrc firewall_type="open"
+```
 
-    Install essential packages:
-
+Install essential packages:
+```
     pkg install nano sudo bash
-
-
+```
 
 
 	==========#   Now you can't do anything except install OpenBSD  #============
@@ -200,7 +215,7 @@ After booting, reconnect via SSH or serial console and:
 
 
 ## $name: C/C++ Blue Prints for Good Times
-
+```
 on:
   push:
     branches: [ "main" ]
@@ -223,11 +238,11 @@ jobs:
     - name: make distcheck
       run: make distcheck
 
-
+```
 
  ## man build:
 
- 
+ ```
     ### The CMake configure and build commands are platform agnostic and should work equally well on Windows or Mac.
    	### You can convert this to a matrix build if you need cross-platform coverage.
     ### See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
@@ -256,6 +271,7 @@ jobs:
 
 
 ### Suppress error reports for code in a file or in a function:
+
 src:bad_file.cpp
 
 ### Ignore all functions with names containing MyFooBar:
@@ -277,7 +293,7 @@ src:bad/init/files/*=init
 
 
 ```
-             xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+             xxxxxxxxxxxxxxxxxxxxxxxxxxxx				x/. RODENXA_MODENA
           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     __
         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx// \
        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx((_  )x
@@ -294,6 +310,12 @@ rrr          wwwww  .....                      ====...
   rrr
    'rr._
      ''rrrrrrrrrrrrrrrr
+
+
+	==========#   Now you can't do anything except install OpenBSD  #============
+	==========#   so you can use this Closed System Opening Tool	#============ 
+	==========#   and then NetBSD so it Can Connect to Computer   	#============ 
+	==========#   to Linux Server and Install Linux    				#============ 
 ```
 
 
@@ -303,6 +325,8 @@ create your own customized system. It offers not only flexibility,
 small footprint but a very recent kernel and set of applications making 
 it ideal for custom system, appliances as well as to learn Linux 
 specially on the micro-kernel or BIOS level
+
+
 
 
 
@@ -701,8 +725,14 @@ Thus, this:
 	...
 	*p2 = x;
 
+```
+
+
+
 
 Refactors into this delightful example we call in Physics, a unique and undecidable branch of String Theory:
+
+
 ```
 assert(p1ar != NULL); uint64_t i = (char*)p1 - p1ar->visible_bytes; assert(i < p1ar->length); assert((p1ar->length - i) >= sizeof(*p1)); x = *p1; ... assert(p2ar != NULL); uint64_t i = (char*)p2 - p2ar->visible_bytes; assert(i < p2ar->length); assert((p2ar->length - i) >= sizeof(*p2)); *p2 = x;
 
