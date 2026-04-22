@@ -23,7 +23,25 @@ $ make obj
 
          ============#   how to install a real operating system    #============ 
 
-Firstly one must ... download the fucking file
+Firstly one must ... download the fucking file set:
+
+
+File Sets
+---------
+The complete OpenBSD installation is broken up into a number of file sets:
+```
+bsd 	The kernel (required)
+bsd.mp 	The multi-processor kernel (only on some platforms)
+bsd.rd 	The ramdisk kernel
+base78.tgz 	The base system (required)
+comp78.tgz 	The compiler collection, headers and libraries
+man78.tgz 	Manual pages
+game78.tgz 	Text-based games
+xbase78.tgz 	Base libraries and utilities for X11 (requires xshare78.tgz)
+xfont78.tgz 	Fonts used by X11
+xserv78.tgz 	X11's X servers
+xshare78.tgz 	X11's man pages, locale settings and includes 
+```
 
 And then act as the Shahan al-Shan bin JavaScript of Ancient Persia would and perform a check sum on that piece of shit to make sure the Tsar did not tamper with al-Gin:
 
