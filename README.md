@@ -754,6 +754,93 @@ Memory Aliasation for Threading Streams using Function Pointers
 
 
 
+
+CAPSICUM(4)		    Kernel Interfaces Manual		   CAPSICUM(4)
+
+NAME
+       Capsicum	-- lightweight OS capability and sandbox framework
+
+SYNOPSIS
+       options CAPABILITY_MODE
+       options CAPABILITIES
+
+DESCRIPTION
+       Capsicum	 is  a	lightweight OS capability and sandbox framework	imple-
+       menting a hybrid	capability system  model.   Capsicum  is  designed  to
+       blend  capabilities  with  UNIX.	  This	approach  achieves many	of the
+       benets of least-privilege operation,  while  preserving	existing  UNIX
+       APIs and	performance, and presents application authors with an adoption
+       path for	capability-oriented design.
+
+       Capabilities  are unforgeable tokens of authority that can be delegated
+       and must	be presented to	perform	an action.  Capsicum  makes  file  de-
+       scriptors into capabilities.
+
+       Capsicum	 can be	used for application and library compartmentalisation,
+       the decomposition of larger bodies of  software	into  isolated	(sand-
+       boxed) components in order to implement security	policies and limit the
+       impact of software vulnerabilities.
+
+       Capsicum	provides two core kernel primitives:
+
+       capability mode
+	       A  process mode,	entered	by invoking cap_enter(2), in which ac-
+	       cess to global OS namespaces (such as the file system  and  PID
+	       namespaces)  is	restricted;  only explicitly delegated rights,
+	       referenced by memory mappings or	file descriptors, may be used.
+	       Once set, the flag is inherited by future  children  processes,
+	       and may not be cleared.
+
+	       Access  to  system calls	in capability mode is restricted: some
+	       system calls requiring global namespace access are unavailable,
+	       while others are	constrained.  For instance, sysctl(2)  can  be
+	       used  to	 query process-local information such as address space
+	       layout, but also	to  monitor  a	systems	 network  connections.
+	       sysctl(2)  is  constrained  by  explicitly marking ~~60 of over
+	       15000 parameters	as permitted in	capability  mode;  all	others
+	       are denied.
+
+	       The  system  calls  which  require  constraints	are sysctl(2),
+	       shm_open(2) (which is  permitted	 to  create  anonymous	memory
+	       objects	but not	named ones) and	the openat(2) family of	system
+	       calls.  The openat(2) calls already accept  a  file  descriptor
+	       argument	 as  the  directory to perform the open(2), rename(2),
+	       etc. relative to; in capability mode the	 openat(2)  family  of
+	       system  calls  are constrained so that they can only operate on
+	       objects under the provided file descriptor.
+
+       capabilities
+	       Limit operations	that can be called on file  descriptors.   For
+	       example,	 a  file descriptor returned by	open(2)	may be refined
+	       using cap_rights_limit(2) so that only read(2) and write(2) can
+	       be called, but not fchmod(2).  The complete list	of  the	 capa-
+	       bility rights can be found in the rights(4) manual page.
+
+       In  some	 cases,	 Capsicum  requires use	of alternatives	to traditional
+       POSIX APIs in order to name  objects  using  capabilities  rather  than
+       global namespaces:
+
+       process descriptors
+	       File   descriptors   representing  processes,  allowing	parent
+	       processes to manage child processes without requiring access to
+	       the PID namespace; described in greater detail in procdesc(4).
+
+       anonymous shared	memory
+	       An extension to the POSIX shared	memory API to  support	anony-
+	       mous  swap  objects associated with file	descriptors; described
+	       in greater detail in shm_open(2).
+
+       In some cases, Capsicum limits the valid	values of some	parameters  to
+       traditional APIs	in order to restrict access to global namespaces:
+
+       process IDs
+	       Processes  can only act upon their own process ID with syscalls
+	       such as cpuset_setaffinity(2).
+
+
+
+
+
 Real-mode MOV:
 ```
 ; r MOV ES/SS/DS/FS/GS,rw
