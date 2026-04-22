@@ -1060,6 +1060,10 @@ Kernel modification examples are given in the config(8) man page.
 
 
 
+<img width="919" height="659" alt="Screenshot 2026-04-22 at 13 23 35" src="https://github.com/user-attachments/assets/40e64889-068f-4758-b9b0-fab4fe71f0ea" />
+
+
+
 
 
 MIPS IV Instruction Set
@@ -1179,6 +1183,13 @@ The default rewriting of a pointer load or store is to two loads or stores, whic
     } while (0)
 
 ```
+
+
+
+
+<img width="1348" height="1790" alt="Screenshot 2026-04-22 at 13 22 52" src="https://github.com/user-attachments/assets/bda71e47-f1c0-42d2-a99f-bdca68061370" />
+
+
 
 When weaving pointers, allocate using a mezzanine memory layer as such:
 
