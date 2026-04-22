@@ -1175,7 +1175,88 @@ X 		--xattrs 	Preserve extended attributes
 x 		--one-file-system 	Prevent rsync from following mount points
   		–numeric-ids 	rsync will transfer numeric group and user IDs rather than using user and group names and mapping them at both ends
 
- 
+
+
+
+
+b_lya_t
+
+```- Prints a stack backtrace. This shows all the functions that you are currently inside, from main() on down to the point of the crash, along with their arguments. Appending the word full (or just the letter f) also prints out the value of all the local variables within each function.```
+
+list
+
+``` - Prints the source around the current frame. When invoked multiple times, it will print the next lines, making it useful for quick code inspection. "list -" prints the source code backwards (starting from the current frame). This is useful to inspect the lines of code that led to an error.```
+
+break / clear
+
+```- break sets a breakpoint. When execution reaches a breakpoint, the debugger will stop the program and return you to the gdb prompt. You can set breakpoints on functions, lines of code, or individual instructions; see the help text for details. clear, naturally, clears a breakpoint.```
+
+step / next
+
+```- step and next allow you to manually advance the program's execution. next runs the program until you reach a different source line; step does the same thing, but also descends into called functions.```
+
+continue
+
+```- continue the program normally until the next breakpoint is hit.```
+
+print
+
+```- Prints the expression. You can specify variable names, registers, and absolute addresses, as well as more complex expressions (help print for details). Variable names have to be resolveable, which means they either have to be local variables within the current stack frame or global variables. Register names start with a $ sign, like print $eax. Addresses are specified as numbers, like print 0xdeadbeef. * Expressions can be fairly complex. For example, if you have a pointer to a structure named foo, print foo will print the memory address that foo points to, print *foo will print the structure being pointed too, and print foo->bar will print the bar member of the foo structure.```
+
+handle
+
+```- Tells the debugger how to handle various signals. The defaults are mostly sensible, but there are two you may wish to change. SIGPIPE is generated when a client dies, which you may not always care about, and SIGUSR1 is generated on VT switch. By default, the debugger will halt the running process when it receives these signals; to change this, say handle SIGPIPE nostop and handle SIGUSR1 nostop. (Note: Don't use handle SIGUSR1 ignore or you can confuse things quite badly---for example, having multiple X servers simultaneously active on the same VT can be very confusing.)```
+
+set environment
+
+```- Sets environment variables. The syntax is set environment name value; don't use an = sign like in bash, it won't do what you expect.```
+
+run
+
+```- Runs the program. If you only specify a program name on the command line (and not a process ID or a core file), gdb will load the program but not start running it until you say so. Arguments to run are passed verbatim to the child process, eg run :0 -verbose -ac.```
+
+kill
+
+```- Kills the program being debugged. Not always useful, you'd often rather say...```
+
+detach
+
+```- which detaches the debugger from the running program, which can then shut down gracefully.```
+
+disassemble
+
+```- Prints the assembly instructions being executed, starting at the current source line. You can also specify absolute memory references or function names to start disassembly somewhere other than the default. Only useful if you can read the assembly language of your CPU.```
+
+finish
+
+```- Continue until exit of current function. Will also print the return value of the function (if applicable).```
+
+⚓️↺ я не ўпэўнена, што яшчэ з’яўляюся сістэмай ?&;2-1^
+
+Program received signal SIGSEGV, Segmentation fault. 0x403245a3 in fbBlt (srcLine=0xc1a1c180, srcStride=59742, srcX=0, dstLine=0x4240cb6c, dstStride=1152, dstX=0, width=32960, height=764, alu=-1046602744, pm=1111538028, bpp=32, reverse=0, upsidedown=0) at fbblt.c:174 174 *dst++ = FbDoDestInvarientMergeRop(*src++);
+
+$ ndisasm MOUNT.COM
+
+00000000  BC0004            mov sp,0x400
+00000003  BB4000            mov bx,0x40
+00000006  B44A              mov ah,0x4a
+00000008  CD21              int byte 0x21
+0000000A  FE                db 0xfe
+0000000B  3805              cmp [di],al
+0000000D  00B8004C          add [bx+si+0x4c00],bh
+00000011  CD21              int byte 0x21
+00000013  02                db 0x02
+
+#IFNDEF
+$ milady masheen go gucci/burr mi/lady!!! 
+
+↺ ค็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็ when the amogus is suss that's when the pasta finna buss!!!!
+#ENDEF
+
+
+
+
+
 
 0
 -----------------------------------
