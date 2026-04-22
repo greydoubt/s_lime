@@ -23,7 +23,27 @@ $ make obj
 
          ============#   how to install a real operating system    #============ 
 
-Download FreeBSD iso file from pirate bay torrent
+
+
+
+To create a bootable USB stick, use the dd command (on Linux/macOS) or Rufus (on Windows).
+On POSIX-Compliant Systems:
+```
+dd if=FreeBSD-XX.X-RELEASE-amd64-memstick.img of=/dev/sdX bs=1M status=progress
+sync
+```
+
+Download or Torrent FreeBSD iso file 
+
+
+
+FreeBSD provides several ISO images. For a headless setup, the most commonly used images are:
+```
+    FreeBSD-XX.X-RELEASE-amd64-disc1.iso – Standard installation media.
+    FreeBSD-XX.X-RELEASE-amd64-memstick.img – Suitable for USB-based installation.
+    FreeBSD-XX.X-RELEASE-amd64-mini-memstick.img – Minimal setup with fewer packages.
+```
+
 
 Insert USB device
 
@@ -48,6 +68,134 @@ Ensure /dev/sdb has correctly imaged the iso file using Ancient Greek Secret cal
     sudo eject /dev/sdb
 ```
 Or as we say in Irish, Drop O'Glaugh in the Rari
+
+
+
+
+Since there’s no monitor, you need a way to interact with the installer remotely. This can be done using:
+
+    SSH (Secure Shell)
+    Serial Console (for hardware servers)
+
+Enabling Serial Console
+
+If your system supports serial access, modify the FreeBSD boot configuration before installation:
+
+    Modify the Bootloader Settings
+
+        Mount the installation media.
+
+        Edit /boot/loader.conf:
+
+        echo 'console="comconsole"' >> /boot/loader.conf
+
+    Enable Serial Access in the Boot Menu
+
+        When booting, interrupt the FreeBSD bootloader and type:
+
+        set console=comconsole
+        boot
+
+    Set Up Baud Rate (Optional, for Legacy Systems)
+
+        Modify /boot.config:
+
+        echo "-h -S115200" > /boot.config
+
+        This ensures compatibility with 115200 baud rate for serial communication.
+
+Enabling SSH for Remote Installation
+
+If using SSH, FreeBSD allows pre-configuring SSH access in the installation media:
+
+    Modify the Bootloader (For headless SSH setup)
+
+    echo 'sshd_enable="YES"' >> /etc/rc.conf
+
+    Set Up a Temporary Root Password
+
+    echo "root:yourpassword" | chpasswd
+
+    Find the IP Address After Booting
+
+        Use DHCP to get an IP address or set a static IP via:
+
+        ifconfig em0 inet 192.168.1.100 netmask 255.255.255.0
+
+    Connect via SSH
+
+    ssh root@192.168.1.100
+
+4. Running the FreeBSD Text-Based Installer
+
+Once connected via SSH or serial console, proceed with the ncurses-based FreeBSD installer.
+Step 1: Select Install Mode
+
+    Choose “Install” from the main menu.
+    Select keyboard layout (default is fine for most setups).
+
+Step 2: Partitioning the Disk
+
+For headless servers, use Auto (UFS) or ZFS (for RAID setups).
+
+    UFS (for simple setups)
+    ZFS (for advanced RAID configurations)
+
+Step 3: Network Configuration
+
+    Set up networking manually or via DHCP.
+    Configure IPv4 and/or IPv6 settings.
+
+Step 4: Root Password and User Creation
+
+    Set a strong root password.
+    Create an admin user (wheel group for sudo access).
+
+Step 5: Package Installation
+
+    Choose minimal installation or install extra components (e.g., ports and source).
+
+Step 6: Post-Installation Configuration
+
+After installation:
+
+    Enable SSH for remote access:
+
+    sysrc sshd_enable="YES"
+
+    Enable serial console permanently:
+
+    echo 'console="comconsole"' >> /boot/loader.conf
+
+5. First Boot and Post-Installation Tasks
+
+Once installation completes, reboot the system:
+
+reboot
+
+After booting, reconnect via SSH or serial console and:
+
+    Update the system:
+
+    freebsd-update fetch install
+    pkg update
+
+    Configure firewall (optional):
+
+    sysrc firewall_enable="YES"
+    sysrc firewall_type="open"
+
+    Install essential packages:
+
+    pkg install nano sudo bash
+
+
+
+
+	==========#   Now you can't do anything except install OpenBSD  #============
+	==========#   so you can use this Closed System Opening Tool	#============ 
+	==========#   and then NetBSD so it Can Connect to Computer   	#============ 
+	==========#   to Linux Server and Install Linux    				#============ 
 
 
 
