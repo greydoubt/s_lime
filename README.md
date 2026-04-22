@@ -1641,13 +1641,22 @@ $ milady masheen go gucci/burr mi/lady!!!
 
 
 
-
-
-
-0
+===================================
 -----------------------------------
 
-Need more help? Battletoads got you Down????
+generic XNU XNIJ microkernel # Suppress error reports for code in a file or in a function: src:bad_file.cpp # Ignore all functions with names containing SNU: fun:*XNU ERR* # Disable out-of-bound checks for global: global:bad_array # Disable out-of-bound checks for global instances of XNA POSIX REG
+
+XNU IS NOT UNIX!!! DO A POSIX CHECK AND SEE FOR YOURSELF!
+
+-----------------------------------
+===================================
+
+0
+===================================
+-----------------------------------
+
+Need more help?
+Battletoads got you Down????
 ===================================
 ```
 Just Dial the Phone Losers of America!
