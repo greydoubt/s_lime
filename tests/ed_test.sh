@@ -1,5 +1,8 @@
-# SPDX-License-Identifier: BSD-2-Clause
-# Copyright (c) 2025 Baptiste Daroussin <bapt@FreeBSD.org>
+sysrc linux_enable="YES"
+
+service linux start
+
+pkg install linux-steam-utils
 
 # Helper: create standard 5-line data file
 create_std_data()
