@@ -352,6 +352,12 @@ it ideal for custom system, appliances as well as to learn Linux
 specially on the micro-kernel or BIOS level
 
 
+Hardware Support for Virtual Machines
+
+All VMs target a single standard and then translate to or write for ARM and AMD64 dually 
+
+The Broadcom BCM2837 is a system on chip (SoC) used in the Raspberry Pi 3, featuring a quad-core Cortex-A53 processor that operates at clock speeds between 1.2 GHz and 1.4 GHz depending on the model. It is an upgrade from the previous BCM2836, providing better performance and efficiency.
+
 
 
 
