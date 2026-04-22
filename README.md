@@ -628,7 +628,7 @@ dump will be in the current directory where startx was executed.
 
 
 
-Installation
+# Installation of XNA BSD Microkernel
 ============
 
 kernel manifest files deploy as a requirements package (text list, .zip archives containing raw SD card image 
@@ -640,6 +640,19 @@ into virtual environment or actual device. While it works offline, advised to ha
 Internet connections to have proper system time, to install packages or 
 for remote SSH access depending on which image you have installed
 
+## Installing Graphics Cards Drivers
+============
+
+This installs the basic drivers that will boot you into shitbox mode so you can download something better(tm)
+```
+# pkg install drm-kmod
+```
+
+Then add the module to /etc/rc.conf file, by executing the following command:
+```
+sysrc kld_list+=i915kms
+sysrc kld_list+=amdgpu
+```
 
 SD card partitioning
 ====================
