@@ -21,6 +21,32 @@ $ rm -rf /usr/obj/*
 $ make obj
 
 
+         ============#   how to install a real operating system    #============ 
+
+Download FreeBSD ISO
+Insert USB device and run lsblk to find the device name ( /dev/sdb or some shit)
+```
+    lsblk
+```
+
+
+Unmount USB Drive
+```
+sudo umount /dev/sdb*
+```
+
+Write FreeBSD ISO
+```
+sudo dd if=/path/to/freebsd.iso of=/dev/sdb bs=4M status=progress
+```
+Ensure /dev/sdb has correctly imaged the iso file using Ancient Greek Secret called Sync and Eject
+```
+    sync
+    sudo eject /dev/sdb
+```
+Or as we say in Irish, Drop O'Glaugh in the Rari
+
+
 
 ## $name: C/C++ Blue Prints for Good Times
 
