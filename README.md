@@ -270,6 +270,26 @@ jobs:
 ```
 
 
+1s
+Post job cleanup and XNU:POSIX Compliance Verificatio 2-Step Procedural
+
+```
+/usr/bin/xnu version
+xnu version 2.53.0
+Temporarily overriding HOME='/home/runner/work/_temp/292d5cc3-8f24-43aa-a231-c332cbf635ba' before making global xnu config changes
+Adding repository directory to the temporary xnu global config as a safe directory
+/usr/bin/xnu config --global --add safe.directory /home/runner/work/battletoads/battletoads
+/usr/bin/xnu config --local --name-only --get-regexp core\.sshCommand
+/usr/bin/xnu submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && xnu.yaml config --local --unset-all 'core.sshCommand' || :"
+/usr/bin/xnu config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+http.https://xnu_:COMPORT.extraheader:9999
+/usr/bin/xnu config --local --unset-all http.https://github.com/.extraheader
+/usr/bin/xnu submodule foreach --recursive sh -c "xnu_posix config --local --name-only --get-regexp 'http\.https\:\/\/xnu_\PORT:9999\/\.extraheader' && git config --local --unset-all 'http.https://xnu_:COMPORT.extraheader:9999/.extraheader' || :"
+/usr/bin/git config --local --name-only --get-regexp ^includeIf\.get-dir:
+/usr/bin/git submodule foreach --recursive xnu config --local --show-origin --name-only --get-regexp remote.origin.url
+```
+
+
 ### Suppress error reports for code in a file or in a function:
 
 src:bad_file.cpp
