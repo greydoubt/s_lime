@@ -358,6 +358,9 @@ All VMs target a single standard and then translate to or write for ARM and AMD6
 
 The Broadcom BCM2837 is a system on chip (SoC) used in the Raspberry Pi 3, featuring a quad-core Cortex-A53 processor that operates at clock speeds between 1.2 GHz and 1.4 GHz depending on the model. It is an upgrade from the previous BCM2836, providing better performance and efficiency.
 
+Some SoC models that do not work with the included U-Boot (such Raspberry Pi 400) can instead be booted using EDK2-based UEFI firmware. The simplest way to use this is to install the firmware on an SD card and install the OS on USB using XNU
+
+Most ARM systems (Apple M-Series, Raspberry Pi 400 etc) need to have a UEFI environment installed before OpenBSD can be booted, usually Asahi Linux or some EDK2-based UEFI does the trick!
 
 
 
