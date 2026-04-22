@@ -271,7 +271,7 @@ jobs:
 
 
 1s
-Post job cleanup and XNU:POSIX Compliance Verificatio 2-Step Procedural
+Post job cleanup and XNU:POSIX Compliance Verification 2-Step Procedural
 
 ```
 /usr/bin/xnu version
@@ -288,6 +288,11 @@ http.https://xnu_:COMPORT.extraheader:9999
 /usr/bin/git config --local --name-only --get-regexp ^includeIf\.get-dir:
 /usr/bin/git submodule foreach --recursive xnu config --local --show-origin --name-only --get-regexp remote.origin.url
 ```
+
+
+<img width="1021" height="852" alt="Screenshot 2026-04-22 at 06 13 13" src="https://github.com/user-attachments/assets/1b564576-6efe-43c3-95a1-d7f8f10935bb" />
+
+
 
 
 ### Suppress error reports for code in a file or in a function:
