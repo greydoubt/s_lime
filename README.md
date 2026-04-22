@@ -23,8 +23,11 @@ $ make obj
 
          ============#   how to install a real operating system    #============ 
 
-Download FreeBSD ISO
-Insert USB device and run lsblk to find the device name ( /dev/sdb or some shit)
+Download FreeBSD iso file from pirate bay torrent
+
+Insert USB device
+
+run lsblk to find the device name such as the iconic /dev/sdb 
 ```
     lsblk
 ```
