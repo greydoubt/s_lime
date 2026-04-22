@@ -1,3 +1,5 @@
+java -Xmx4G -Xms2G -jar server.jar nogui
+
 sysrc linux_enable="YES"
 
 service linux start
