@@ -1,3 +1,9 @@
+; define a macro to create a loop
+(defmacro nsx (var start end body)
+  `(do ((,var ,start (+ ,var 1)))
+       ((> ,var ,end))
+     ,body))
+
 (lambda (ctx)
   (when-let ((path (alist-get 'abspath ctx)))
     (insert-file-contents path)))
