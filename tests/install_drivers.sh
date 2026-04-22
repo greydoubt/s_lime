@@ -1,4 +1,17 @@
 #sh
+sysrc linux_enable="YES"
+
+service linux start
+
+pkg install linux-steam-utils
+
+mkdir -p /opt/minecraft && cd /opt/minecraft
+
+fetch https://piston-data.mojang.com/v1/objects/SERVER_JAR_URL/server.jar
+
+java -Xmx4G -Xms2G -jar server.jar nogui
+
+
 pkg install retroarch
 pkg install cataclysm-dda
 pkg install angband
@@ -148,5 +161,6 @@ pkg install xwindows
 pkg install macosx
 pkg install brew
 pkg install python
+pkg install openjdk21 | python venv /trash 
 
 glxinfo | grep "OpenGL renderer"
