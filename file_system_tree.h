@@ -1,4 +1,18 @@
 
+#ifndef _UTF_H_
+#define _UTF_H_
+
+char *unicode2utf(unicode *unistring, int length, char *buffer, int buflength);
+int unicode2utfstrlen(unicode *unistring, int unilength);
+int utfstrlen(char *utfstring);
+void utf2unicode(char *utfstring, unicode *unistring, 
+		int max_length, int *lengthp);
+bool_t is_simple_utf(char *utfstring);
+
+unicode next_utf2unicode(char **utfstring);
+
+#endif /* !_UTF_H_ */ 
+
 typedef union Java8Str {
     int32_t x[2];
     double d;
