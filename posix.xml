@@ -1,0 +1,955 @@
+Columns:
+; Command: The text one enters to launch the command.
+; Category: Functional categorization.
+; Optionality: Indicates whether the command is mandatory or optional in order to achieve conformance. If the latter, then a code indicates the optional functionality group to which the command belongs.
+:; Batch environment (BE): [[Batch processing |Batch job control]]. 
+:; C‑language development (CD): For developing [[software]] in [[C (programming language) |C]].
+:; FORTRAN development (FD): For developing software in [[FORTRAN]].
+:; FORTRAN runtime (FR): Runtime‑support for FORTRAN.
+:; Software development (SD): For developing software; not [[programming language |language]] specific.
+:; User portability (UP): Addresses consistency at the [[user interface]] level.
+:; X/Open System Interfaces (XSI): Historically UNIX-like features that were common on [[System V]]–style systems.
+; Description: Describes what the command does.
+; First appeared: Identifies an operating system version in which the command was first provided.
+
+{{Sticky header}}
+{{Table alignment}}
+{|class="wikitable sortable sticky-header col3center"
+|-
+!scope="col" | Command
+!scope="col" | Category
+!scope="col" | Optionality
+!scope="col" | Description
+!scope="col" | First appeared
+|-
+!scope="row"| <span style="font-family: monospace">admin</span>
+| SCCS
+| {{Optional}} (XSI)
+| Create and administer [[Source Code Control System|SCCS]] files
+| PWB UNIX
+|-
+!scope="row"| [[alias (command)|<span style="font-family: monospace">alias</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Manage command aliases
+| 
+|-
+!scope="row"| [[ar (Unix)|<span style="font-family: monospace">ar</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Manage [[Library (computing)|library]] archives
+| Version 1 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">asa</span>
+| Text processing
+| {{Optional}} (FR)
+| Interpret [[ASA carriage control characters|carriage-control]] characters
+| System V
+|-
+!scope="row"| [[at (command)|<span style="font-family: monospace">at</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Execute commands at a later time
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[AWK|<span style="font-family: monospace">awk</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Pattern scanning and processing language
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[basename|<span style="font-family: monospace">basename</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Report non-directory portion of a pathname
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[batch (Unix)|<span style="font-family: monospace">batch</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Schedule commands to be executed in a batch queue
+| 
+|-
+!scope="row"| [[bc (programming language)|<span style="font-family: monospace">bc</span>]]
+| Misc
+| {{needs|Mandatory}}
+| [[Arbitrary-precision arithmetic]] calculator
+| Version 6 AT&T UNIX
+|-
+!scope="row"| [[bg (Unix)|<span style="font-family: monospace">bg</span>]]
+| Process management
+| {{Optional}} (UP)
+| Move jobs to the background
+| 
+|-
+!scope="row"| [[C compiler|<span style="font-family: monospace">cc</span>]]
+| C programming
+| {{Optional}} (CD)
+| [[compiler|Compile]] [[C (programming language)|C]] [[source code]]
+| IEEE Std 1003.1-2024
+|-
+!scope="row"| [[cal (command)|<span style="font-family: monospace">cal</span>]]
+| Misc
+| {{Optional}} (XSI)
+| Print a calendar
+| Version 5 AT&T UNIX
+|-
+!scope="row"| [[cat (Unix)|<span style="font-family: monospace">cat</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Concatenate and print files
+| PDP-7 UNIX
+|-
+!scope="row"| [[cd (command)|<span style="font-family: monospace">cd</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Change the working directory
+| Version 6 AT&T UNIX
+|-
+!scope="row"| [[cflow|<span style="font-family: monospace">cflow</span>]]
+| C programming
+| {{Optional}} (XSI)
+| Generate a C-language [[call graph]]
+| System V
+|-
+!scope="row"| [[chgrp|<span style="font-family: monospace">chgrp</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Change file group ownership
+| PWB UNIX
+|-
+!scope="row"| [[chmod|<span style="font-family: monospace">chmod</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Change file modes/attributes/permissions
+| PDP-7 UNIX
+|-
+!scope="row"| [[chown|<span style="font-family: monospace">chown</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Change file ownership
+| PDP-7 UNIX
+|-
+!scope="row"| [[cksum|<span style="font-family: monospace">cksum</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Report file [[checksum]] and size
+| 4.4BSD
+|-
+!scope="row"| [[cmp (Unix)|<span style="font-family: monospace">cmp</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Compare two files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[comm|<span style="font-family: monospace">comm</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Select or reject lines common to two files
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[command (Unix)|<span style="font-family: monospace">command</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Execute a simple command
+| 
+|-
+!scope="row"| [[compress|<span style="font-family: monospace">compress</span>]]
+| Filesystem
+| {{Optional}} (XSI)
+| Compress data
+| 4.3BSD
+|-
+!scope="row"| [[cp (Unix)|<span style="font-family: monospace">cp</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Copy files
+| PDP-7 UNIX
+|-
+!scope="row"| [[cron|<span style="font-family: monospace">cron</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Schedule periodic background work
+| System V
+|-
+!scope="row"| [[csplit|<span style="font-family: monospace">csplit</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Split files based on context
+| PWB UNIX
+|-
+!scope="row"| [[ctags|<span style="font-family: monospace">ctags</span>]]
+| C programming
+| {{Optional}} (SD)
+| Create a tags file
+| 3BSD
+|-
+!scope="row"| [[cut (Unix)|<span style="font-family: monospace">cut</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Cut out selected fields of each line of a file
+| System III
+|-
+!scope="row"| <span style="font-family: monospace">cxref</span>
+| C programming
+| {{Optional}} (XSI)
+| Generate a [[C (programming language)|C-language]] program cross-reference table
+| System V
+|-
+!scope="row"| [[Date (Unix command)|<span style="font-family: monospace">date</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Report or change system date and time
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[dd (Unix)|<span style="font-family: monospace">dd</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Convert and copy files
+| Version 5 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">delta</span>
+| SCCS
+| {{Optional}} (XSI)
+| Make a delta (change) to an SCCS file
+| PWB UNIX
+|-
+!scope="row"| [[df (Unix)|<span style="font-family: monospace">df</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Report free storage space
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[diff|<span style="font-family: monospace">diff</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Compare two files
+| Version 5 AT&T UNIX
+|-
+!scope="row"| [[dirname|<span style="font-family: monospace">dirname</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Report the directory portion of a pathname
+| System III
+|-
+!scope="row"| [[du (Unix)|<span style="font-family: monospace">du</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Estimate file space usage
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[echo (command)|<span style="font-family: monospace">echo</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Write to standard output
+| Version 2 AT&T UNIX
+|-
+!scope="row"| [[ed (text editor)|<span style="font-family: monospace">ed</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| The standard text editor
+| PDP-7 UNIX
+|-
+!scope="row"| [[env (shell)|<span style="font-family: monospace">env</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Set the environment for command invocation
+| System III
+|-
+!scope="row"| [[ex (text editor)|<span style="font-family: monospace">ex</span>]]
+| Text processing
+| {{Optional}} (UP)
+| Text editor
+| 1BSD
+|-
+!scope="row"| [[expand (Unix)|<span style="font-family: monospace">expand</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Convert tabs to spaces
+| 3BSD
+|-
+!scope="row"| [[expr|<span style="font-family: monospace">expr</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Evaluate arguments as an expression
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[false (Unix)|<span style="font-family: monospace">false</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Exit immediately with [[exit status |status]] 1
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[fc (Unix)|<span style="font-family: monospace">fc</span>]]
+| Misc
+| {{Optional}} (UP)
+| Process the command history list
+| 
+|-
+!scope="row"| [[fg (Unix)|<span style="font-family: monospace">fg</span>]]
+| Process management
+| {{Optional}} (UP)
+| Move a job to the foreground
+| 
+|-
+!scope="row"| [[file (command)|<span style="font-family: monospace">file</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Report type of files
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[find (Unix)|<span style="font-family: monospace">find</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Find files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[fold (Unix)|<span style="font-family: monospace">fold</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Filter for folding lines
+| 1BSD
+|-
+!scope="row"| [[fuser (Unix)|<span style="font-family: monospace">fuser</span>]]
+| Process management
+| {{Optional}} (XSI)
+| List [[Process identifier|process IDs]] of all processes that have one or more files open
+| System V
+|-
+!scope="row"| <span style="font-family: monospace">gencat</span>
+| Misc
+| {{needs|Mandatory}}
+| Generate a formatted message catalog
+| 
+|-
+!scope="row"| <span style="font-family: monospace">get</span>
+| SCCS
+| {{Optional}} (XSI)
+| Get a version of an SCCS file
+| PWB UNIX
+|-
+!scope="row"| <span style="font-family: monospace">getconf</span>
+| Misc
+| {{needs|Mandatory}}
+| Get configuration values
+| 
+|-
+!scope="row"| [[getopts|<span style="font-family: monospace">getopts</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Parse utility options
+| 
+|-
+!scope="row"| [[gettext|<span style="font-family: monospace">gettext</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Retrieve text string from messages object
+| 
+|-
+!scope="row"| [[grep|<span style="font-family: monospace">grep</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Search text for a pattern
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[hash (Unix)|<span style="font-family: monospace">hash</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Hash database access method
+| 
+|-
+!scope="row"| [[head (Unix)|<span style="font-family: monospace">head</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Copy the first part of files
+| PWB UNIX{{citation needed|date=May 2009}}
+|-
+!scope="row"| [[iconv|<span style="font-family: monospace">iconv</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Codeset conversion
+| HP-UX
+|-
+!scope="row"| [[id (Unix)|<span style="font-family: monospace">id</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Report user identity
+| System V
+|-
+!scope="row"| [[ipcrm|<span style="font-family: monospace">ipcrm</span>]]
+| Misc
+| {{Optional}} (XSI)
+| Remove a message queue, semaphore set, or shared memory segment identifier
+| System V
+|-
+!scope="row"| [[ipcs|<span style="font-family: monospace">ipcs</span>]]
+| Misc
+| {{Optional}} (XSI)
+| Report interprocess communication facilities status
+| System V
+|-
+!scope="row"| <span style="font-family: monospace">jobs</span>
+| Process management
+| {{Optional}} (UP)
+| Report background jobs
+| 
+|-
+!scope="row"| [[join (Unix)|<span style="font-family: monospace">join</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Merges two sorted text files based on the presence of a common field
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[kill (command)|<span style="font-family: monospace">kill</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Terminate or signal processes
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[lex programming tool|<span style="font-family: monospace">lex</span>]]
+| C programming
+| {{Optional}} (CD)
+| Generate programs for [[Lexical analyzer|lexical tasks]]
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[link (Unix)|<span style="font-family: monospace">link</span>]]
+| Filesystem
+| {{Optional}} (XSI)
+| Create a hard link to a file
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[ln (Unix)|<span style="font-family: monospace">ln</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Link files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">locale</span>
+| Misc
+| {{needs|Mandatory}}
+| Get locale-specific information
+| 
+|-
+!scope="row"| [[localedef|<span style="font-family: monospace">localedef</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Define locale environment
+| 
+|-
+!scope="row"| <span style="font-family: monospace">logger</span>
+| Shell programming
+| {{needs|Mandatory}}
+| Log messages
+| 4.3BSD
+|-
+!scope="row"| [[logname|<span style="font-family: monospace">logname</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Report the user's login name
+| 4.4BSD
+|-
+!scope="row"| [[lp (Unix)|<span style="font-family: monospace">lp</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Send files to a printer
+| System V
+|-
+!scope="row"| [[ls|<span style="font-family: monospace">ls</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| List directory contents
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[M4 (computer language)|<span style="font-family: monospace">m4</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Macro processor
+| PWB UNIX
+|-
+!scope="row"| [[mailx|<span style="font-family: monospace">mailx</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Process messages
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[make (software)|<span style="font-family: monospace">make</span>]]
+| Programming
+| {{Optional}} (SD)
+| Maintain, update, and regenerate groups of programs
+| PWB UNIX
+|-
+!scope="row"| [[man page|<span style="font-family: monospace">man</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Display system documentation
+| Version 2 AT&T UNIX
+|-
+!scope="row"| [[mesg|<span style="font-family: monospace">mesg</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Permit or deny messages
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[mkdir|<span style="font-family: monospace">mkdir</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Make directories
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[mkfifo|<span style="font-family: monospace">mkfifo</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Make [[FIFO (computing and electronics)|FIFO]] special files
+| 4.4BSD{{dubious|mkfifo|date=April 2014}}
+|-
+!scope="row"| [[more (command)|<span style="font-family: monospace">more</span>]]
+| Text processing
+| {{Optional}} (UP)
+| Display files on a page-by-page basis
+| 3BSD
+|-
+!scope="row"| [[msgfmt|<span style="font-family: monospace">msgfmt</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Create messages objects from messages object files
+|
+|-
+!scope="row"| [[Mv (Unix)|<span style="font-family: monospace">mv</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Move or rename files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[newgrp|<span style="font-family: monospace">newgrp</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Change to a new group
+| Version 6 AT&T UNIX
+|-
+!scope="row"| [[gettext|<span style="font-family: monospace">ngettext</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Retrieve text string from messages object with plural form
+| 
+|-
+!scope="row"| [[nice (Unix)|<span style="font-family: monospace">nice</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Invoke a utility with an altered nice value
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[nl (Unix)|<span style="font-family: monospace">nl</span>]]
+| Text processing
+| {{Optional}} (XSI)
+| Line numbering filter
+| System III
+|-
+!scope="row"| [[nm (Unix)|<span style="font-family: monospace">nm</span>]]
+| C programming
+| {{Optional}}<br/>(SD, XSI)
+| Write the name list of an [[object file]]
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[nohup|<span style="font-family: monospace">nohup</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Invoke a utility immune to [[SIGHUP|hangups]]
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[od (Unix)|<span style="font-family: monospace">od</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Dump files in various formats
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[paste (Unix)|<span style="font-family: monospace">paste</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Merge corresponding or subsequent lines of files
+| Version 32V AT&T UNIX
+|-
+!scope="row"| [[patch (Unix)|<span style="font-family: monospace">patch</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Apply changes to files
+| 4.3BSD
+|-
+!scope="row"| [[pathchk|<span style="font-family: monospace">pathchk</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Check pathnames
+| 
+|-
+!scope="row"| [[pax (command)|<span style="font-family: monospace">pax</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Portable archive interchange
+| 4.4BSD{{citation needed|date=December 2014}}
+|-
+!scope="row"| [[pr (Unix)|<span style="font-family: monospace">pr</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Paginate or columnate files for printing
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[printf (Unix)|<span style="font-family: monospace">printf</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Write formatted output
+| 4.3BSD-Reno
+|-
+!scope="row"| <span style="font-family: monospace">prs</span>
+| SCCS
+| {{Optional}} (XSI)
+| Print an SCCS file
+| PWB UNIX
+|-
+!scope="row"| [[ps (Unix)|<span style="font-family: monospace">ps</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Report process status
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[pwd|<span style="font-family: monospace">pwd</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Print working directory
+| Version 5 AT&T UNIX
+|-
+!scope="row"| [[read (Unix)|<span style="font-family: monospace">read</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Read a line from standard input
+| 
+|-
+!scope="row"| <span style="font-family: monospace">readlink</span>
+| Filesystem
+| {{needs|Mandatory}}
+| Print destination of a symbolic link
+| 
+|-
+!scope="row"| <span style="font-family: monospace">realpath</span>
+| Filesystem
+| {{needs|Mandatory}}
+| Report the [[Fully qualified name#Filenames and paths |fully qualified path]] of a file
+| [[X/Open#X/Open Portability Guide|XPG4]]<ref name="realpath">{{Cite web|author=IEEE Computer Society|author-link=IEEE Computer Society|date=2008-12-01|title=POSIX.1-2008 System Interfaces: realpath()|website=The Open Group|url=https://pubs.opengroup.org/onlinepubs/9699919799.orig/functions/realpath.html|url-status=live|archive-url=https://web.archive.org/web/20240918051049if_/https://pubs.opengroup.org/onlinepubs/9699919799.orig/functions/realpath.html|archive-date=2024-09-18|series=Base Specifications (Issue 7)|doi=10.1109/IEEESTD.2008.4694976|isbn=978-0-7381-4048-3|access-date=2025-10-27|df=mdy-all|quote=First released in CAE Specification: System Interface Definitions (XBD), Issue 4, Version 2 (August 1994).}}</ref>
+|-
+!scope="row"| [[renice|<span style="font-family: monospace">renice</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Set nice values of running processes
+| 4BSD
+|-
+!scope="row"| [[rm (Unix)|<span style="font-family: monospace">rm</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Remove file(s)
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[rmdel|<span style="font-family: monospace">rmdel</span>]]
+| SCCS
+| {{Optional}} (XSI)
+| Remove a delta from an SCCS file
+| PWB UNIX
+|-
+!scope="row"| [[rmdir|<span style="font-family: monospace">rmdir</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Remove empty directory(ies)
+| Version 1 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">sact</span>
+| SCCS
+| {{Optional}} (XSI)
+| Print current SCCS file-editing activity
+| System III
+|-
+!scope="row"| [[Source Code Control System|<span style="font-family: monospace">sccs</span>]]
+| SCCS
+| {{Optional}} (XSI)
+| Front end for the SCCS subsystem
+| 4.3BSD
+|-
+!scope="row"| [[sed|<span style="font-family: monospace">sed</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Stream editor
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[Bourne shell|<span style="font-family: monospace">sh</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| [[Unix shell|Shell]], the standard command language interpreter
+| Version 7 AT&T UNIX<br/>(in earlier versions, sh was either the [[Thompson shell]] or the [[PWB shell]])
+|-
+!scope="row"| [[sleep (command)|<span style="font-family: monospace">sleep</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Suspend execution for an interval
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[sort (Unix)|<span style="font-family: monospace">sort</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Sort, merge, or sequence check text files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[split (Unix)|<span style="font-family: monospace">split</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Split files into pieces
+| Version 3 AT&T UNIX
+|-
+!scope="row"| [[strings (Unix)|<span style="font-family: monospace">strings</span>]]
+| C programming
+| {{needs|Mandatory}}
+| Find printable strings in files
+| 2BSD
+|-
+!scope="row"| [[strip (Unix)|<span style="font-family: monospace">strip</span>]]
+| C programming
+| {{Optional}} (SD)
+| Remove unnecessary information from executable files
+| Version 1 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">stty</span>
+| Misc
+| {{needs|Mandatory}}
+| Set the options for a terminal
+| Version 2 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">tabs</span>
+| Misc
+| {{needs|Mandatory}}
+| Set terminal tabs
+| PWB UNIX
+|-
+!scope="row"| [[tail (Unix)|<span style="font-family: monospace">tail</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Copy the last part of a file
+| PWB UNIX{{citation needed|date=May 2009}}
+|-
+!scope="row"| [[talk (software)|<span style="font-family: monospace">talk</span>]]
+| Misc
+| {{Optional}} (UP)
+| Talk to another user
+| 4.2BSD
+|-
+!scope="row"| [[tee (command)|<span style="font-family: monospace">tee</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Duplicate the [[Standard streams|standard output]]
+| Version 5 AT&T UNIX
+|-
+!scope="row"| [[test (Unix)|<span style="font-family: monospace">test</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Evaluate [[expression (computer science)|expression]]
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[time (Unix)|<span style="font-family: monospace">time</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Display elapsed, system and kernel time used by the current shell or designated process. 
+| Version 3 AT&T UNIX<ref>{{cite web |author=<!-- not stated --> |date=July 7, 2020 |title=FreeBSD Manual Pages: time |url=https://man.freebsd.org/cgi/man.cgi?query=time |website=man.freebsd.org|access-date=Mar 23, 2025}} </ref> 
+|-
+!scope="row"| <span style="font-family: monospace">timeout</span>
+| Process management
+| {{needs|Mandatory}}
+| Run command with a time limit
+| Version 3 AT&T UNIX
+|-
+!scope="row"| [[touch (command)|<span style="font-family: monospace">touch</span>]]
+| Filesystem
+| {{needs|Mandatory}}
+| Change file access and modification times
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[tput|<span style="font-family: monospace">tput</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Change [[Computer terminal|terminal]] characteristics
+| System V
+|-
+!scope="row"| [[tr (Unix)|<span style="font-family: monospace">tr</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Translate characters
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[true (Unix)|<span style="font-family: monospace">true</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Exit immediately with [[exit status |status]] 0
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[tsort (Unix)|<span style="font-family: monospace">tsort</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Topological sort
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[tty (unix)|<span style="font-family: monospace">tty</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Report user's [[Computer terminal|terminal]] name
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[type (Unix)|<span style="font-family: monospace">type</span>]]
+| Misc
+| {{Optional}} (XSI)
+| Displays how a name would be interpreted if used as a command
+| 
+|-
+!scope="row"| <span style="font-family: monospace">ulimit</span>
+| Misc
+| {{Optional}} (XSI)
+| Set or report file size limit
+| 
+|-
+!scope="row"| [[umask|<span style="font-family: monospace">umask</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Get or set file mode creation mask
+| System III
+|-
+!scope="row"| [[unalias|<span style="font-family: monospace">unalias</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Remove alias definitions
+| 
+|-
+!scope="row"| [[uname|<span style="font-family: monospace">uname</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Report system name
+| PWB UNIX
+|-
+!scope="row"| [[uncompress|<span style="font-family: monospace">uncompress</span>]]
+| Misc
+| {{Optional}} (XSI)
+| Expand compressed data
+| 4.3BSD
+|-
+!scope="row"| [[unexpand|<span style="font-family: monospace">unexpand</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Convert spaces to tabs
+| 3BSD
+|-
+!scope="row"| <span style="font-family: monospace">unget</span>
+| SCCS
+| {{Optional}} (XSI)
+| Undo a previous get of an SCCS file
+| System III
+|-
+!scope="row"| [[uniq|<span style="font-family: monospace">uniq</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Report or filter out repeated lines in a file
+| Version 3 AT&T UNIX
+|-
+!scope="row"| [[unlink (Unix)|<span style="font-family: monospace">unlink</span>]]
+| Filesystem
+| {{Optional}} (XSI)
+| Call the unlink function
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[uucp|<span style="font-family: monospace">uucp</span>]]
+| Network
+| {{Optional}} (UU)
+| System-to-system copy
+| Version 7 AT&T UNIX
+|-
+!scope="row"| [[uudecode|<span style="font-family: monospace">uudecode</span>]]
+| Network
+| {{needs|Mandatory}}
+| Decode a binary file
+| 4BSD
+|-
+!scope="row"| [[uuencode|<span style="font-family: monospace">uuencode</span>]]
+| Network
+| {{needs|Mandatory}}
+| Encode a binary file
+| 4BSD
+|-
+!scope="row"| [[uustat|<span style="font-family: monospace">uustat</span>]]
+| Network
+| {{Optional}} (UU)
+| [[uucp]] status inquiry and job control
+| System III
+|-
+!scope="row"| <span style="font-family: monospace">uux</span>
+| Process management
+| {{Optional}} (UU)
+| Remote command execution
+| Version 7 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">val</span>
+| SCCS
+| {{Optional}} (XSI)
+| Validate SCCS files
+| System III
+|-
+!scope="row"| [[Vi (text editor)|<span style="font-family: monospace">vi</span>]]
+| Text processing
+| {{Optional}} (UP)
+| Screen-oriented (visual) display editor
+| 1BSD
+|-
+!scope="row"| [[wait (command)|<span style="font-family: monospace">wait</span>]]
+| Process management
+| {{needs|Mandatory}}
+| Await process completion
+| Version 4 AT&T UNIX
+|-
+!scope="row"| [[wc (Unix)|<span style="font-family: monospace">wc</span>]]
+| Text processing
+| {{needs|Mandatory}}
+| Line, word and byte or character count
+| Version 1 AT&T UNIX
+|-
+!scope="row"| <span style="font-family: monospace">what</span>
+| SCCS
+| {{Optional}} (XSI)
+| Identify SCCS files
+| PWB UNIX
+|-
+!scope="row"| [[who (Unix)|<span style="font-family: monospace">who</span>]]
+| System administration
+| {{Optional}} (XSI)
+| Display who is on the system
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[write (Unix)|<span style="font-family: monospace">write</span>]]
+| Misc
+| {{needs|Mandatory}}
+| Write to another user's terminal
+| Version 1 AT&T UNIX
+|-
+!scope="row"| [[xargs|<span style="font-family: monospace">xargs</span>]]
+| Shell programming
+| {{needs|Mandatory}}
+| Construct argument lists and invoke utility
+| PWB UNIX
+|-
+!scope="row"| [[gettext|<span style="font-family: monospace">xgettext</span>]]
+| C programming
+| {{Optional}} (CD)
+| Extract gettext calls from C source code strings 
+| IEEE Std 1003.1-2024
+|-
+!scope="row"| [[yacc|<span style="font-family: monospace">yacc</span>]]
+| C programming
+| {{Optional}} (CD)
+| Yet another [[compiler]] compiler
+| PWB UNIX
+|-
+!scope="row"| [[zcat|<span style="font-family: monospace">zcat</span>]]
+| Text processing
+| {{Optional}} (XSI)
+| Expand and concatenate compressed data
+| 4.3BSD
+|-
+|}
