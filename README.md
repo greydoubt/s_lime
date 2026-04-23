@@ -587,6 +587,58 @@ linear_address_lm = segment_base_mb + effective_address_a
 
 ####
 
+HEX THAT SHIT with IOKit
+===================================
+
+(Hekit/Hecate Controller Potion Formula Scribe)
+
+
+
+<img width="1499" height="1121" alt="Screenshot 2026-04-23 at 06 01 43" src="https://github.com/user-attachments/assets/8a80539b-d8e0-4c23-a8e7-c1b7997eb39f" />
+
+
+Suppose you have a tiny 6x6 grid, it can be a PNG image or a JSON array: It just has to reduce to atomic components even if those can be represented in some other way, ergo it forms a dual-system. The core metaphor is that it is a 6 pixels by 6 pixels image normalised to a grid and quantised down to an atomic sub-unit (ie a pixel has 3 values for RGB colours)
+
+That is why hexadecimal instead of base-AnythingElse is used: it forms a cubic grid, ie, allows for quantum operations on the lattice using functional operators at relativistic speeds.  Remember that two hex digits are one byte and can be encoded/decoded from the front or trailing end depending on how masochistic the device manufacturer felt that day. When we store it using little endian, we store the least significant byte (LSB) first in the file (or memory). For that reason, little endian can also be called LSB first. 
+
+To obtain a hex dump use this command:
+```
+$ xxd 6x6_24bit.PNG
+```
+
+It will be more convenient to view in vim, do not omit the trailing -
+```
+$ xxd 6x6_24bit.png | vim -
+```
+
+<img width="964" height="900" alt="Screenshot 2026-04-23 at 06 10 23" src="https://github.com/user-attachments/assets/ee1c799e-9706-4409-a585-d0369f122b2e" />
+
+
+
+
+
+Example BitMap (BMP) standard header specification
+===================================
+typedef struct {             // Total: 54 bytes
+  uint16_t  type;             // Magic identifier: 0x4d42
+  uint32_t  size;             // File size in bytes
+  uint16_t  reserved1;        // Not used
+  uint16_t  reserved2;        // Not used
+  uint32_t  offset;           // Offset to image data in bytes from beginning of file (54 bytes)
+  uint32_t  dib_header_size;  // DIB Header size in bytes (40 bytes)
+  int32_t   width_px;         // Width of the image
+  int32_t   height_px;        // Height of image
+  uint16_t  num_planes;       // Number of color planes
+  uint16_t  bits_per_pixel;   // Bits per pixel
+  uint32_t  compression;      // Compression type
+  uint32_t  image_size_bytes; // Image size in bytes
+  int32_t   x_resolution_ppm; // Pixels per meter
+  int32_t   y_resolution_ppm; // Pixels per meter
+  uint32_t  num_colors;       // Number of colors  
+  uint32_t  important_colors; // Important colors 
+} BMPHeader;
+
+
 
 
 Initialisation of the Host Computer
