@@ -931,12 +931,19 @@ assert(p1ar != NULL); uint64_t i = (char*)p1 - p1ar->visible_bytes; assert(i < p
 
 ```
 
+
+
+
+
+
 Furthermore, if there is a pointer at visible_bytes + i, then its accompanying AllocationRecord* is at invisible_bytes + i, then we must deal with this hot clopper where a pointer re-allocates its records to a new pointer address offset by its new location :
 ```
 	p2 = *p1;
   ...
   *p1 = p2;
 ```
+
+
 Derenders (Refactors is a De-render of an optimised local solid blob then sent to gobugobu(freier) inside garbler for containment of turkey image gobu gobu(&), aka the clopper then evolves and devolves and foams into an artifice called a Clogger:
 
 
@@ -958,6 +965,21 @@ assert(p1ar != NULL);
   *(AllocationRecord**)(p1ar->invisible_bytes + i) = p2ar; #
 ```
 
+Generic Microkernals Kernels *BECOME* Macrokernels
+================
+
+And then you can extend the generic microkernels into a set of macros, thus a macrokernel, and then add a functional bi-layer to this and you have immediate access to the power-duos of:
+
+- Hardware + Software: Updateable Firmware
+- Machine Learning and Statistics: Artificial Intelligence
+- Object Oriented Programming and Algebra: Games
+- Calculus and Statistical Lithography: Movies
+- Operating Systems and Software: Everything else you could ever desire (BUTTS GALORE!!)
+
+<img width="2048" height="1779" alt="HGjRiV-WAAAV0ZP" src="https://github.com/user-attachments/assets/e3a5434e-4ed3-43dd-9394-bac3f083d163" />
+
+
+
 
 Custom Kernels
 ================
@@ -968,6 +990,8 @@ Custom Kernels
     permanent modification of a compiled kernel using config(8)
     compilation of a custom kernel 
 ```
+
+
 Boot-Time Configuration
 ----------------
 OpenBSD's boot-time kernel configuration, boot_config(8), allows an administrator to modify certain kernel settings, such as enabling or disabling support for various devices, without recompiling the kernel itself.
@@ -986,6 +1010,13 @@ boot> boot hd0a:/bsd -c
 ### Doing this will bring up a UKC prompt. Type help for a list of available commands.
 
 Using boot_config(8) only provides a temporary change, meaning the procedure would have to be repeated on every reboot. The next section explains how to make the changes permanent.
+
+
+
+<img width="628" height="354" alt="Screenshot 2026-04-23 at 02 51 32" src="https://github.com/user-attachments/assets/e07c273b-6617-42e6-9f26-95c87850583a" />
+
+
+
 
 Using config(8) to Change Kernel Options
 ----------------
