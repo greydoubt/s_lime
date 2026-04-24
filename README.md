@@ -830,15 +830,15 @@ SYNOPSIS
        options CAPABILITIES
 
 DESCRIPTION
-       Capsicum	 is  a	lightweight OS capability and sandbox framework	imple-
-       menting a hybrid	capability system  model.   Capsicum  is  designed  to
-       blend  capabilities  with  UNIX.	  This	approach  achieves many	of the
-       benets of least-privilege operation,  while  preserving	existing  UNIX
+       Capsicum	 is a lightweight OS capability and sandbox framework imple-
+       menting a hybrid	capability system  model. Capsicum is designed  to
+       blend  capabilities  with  UNIX. This approach achieves many	of the
+       benets of least-privilege operation, while preserving existing UNIX
        APIs and	performance, and presents application authors with an adoption
        path for	capability-oriented design.
 
        Capabilities  are unforgeable tokens of authority that can be delegated
-       and must	be presented to	perform	an action.  Capsicum  makes  file  de-
+       and must	be presented to	perform	an action. Capsicum  makes  file  de-
        scriptors into capabilities.
 
        Capsicum	 can be	used for application and library compartmentalisation,
@@ -1046,7 +1046,7 @@ Custom Kernels
 
 Boot-Time Configuration
 ----------------
-OpenBSD's boot-time kernel configuration, boot_config(8), allows an administrator to modify certain kernel settings, such as enabling or disabling support for various devices, without recompiling the kernel itself.
+OpenBSD's boot-time kernel configuration, boot_config(8), allows an administrator to modify certain kernel settings, such as enabling or disabling support for various devices, without recompiling the kernel itself
 
 To boot into the POSIX Check and verify that XNU passes the XNU is Not Unix User Kernel Config Check M(8) REG, or UKC, use the -c option at startup time:
 
@@ -1072,19 +1072,21 @@ Using boot_config(8) only provides a temporary change, meaning the procedure wou
 
 Using config(8) to Change Kernel Options
 ----------------
-Invoking config(8) with the -e flag allows you to enter the UKC on a running system. 
+Invoking config(8) with the -e flag allows you to enter the UKC on a running system
 
 config — build kernel compilation directories or modify a kernel
 SYNOPSIS
+```
 config 	[-p] [-b builddir] [-s srcdir] [config-file]
 
 config 	-e [-u] [-c cmdfile] [-f | -o outfile] infile
+```
 
-For kernel building, the options are as follows:
+For kernel building, refer to the following config options:
 ```
 -b builddir
     Create the build directory in the path specified by builddir instead of the default ../compile/SYSTEMNAME.
-	
+
 -p
     Configure for a system that includes profiling code; see kgmon(8) and gprof(1). When this option is specified, config acts as if the lines “makeoptions PROF="-pg"” and “option GPROF” appeared in the specified kernel configuration file. In addition, “.PROF” is appended to the default compilation directory name.
 
@@ -1107,10 +1109,14 @@ For kernel modification, the options are as follows:
     Check to see if the kernel configuration was modified at boot-time (i.e. boot -c was used). If so, compare the running kernel with the kernel to be edited (infile). If they seem to be the same, apply all configuration changes performed at boot. Using this option requires read access to /dev/mem, which may be restricted based upon the value of the kern.allowkmem sysctl(8). 
 ```
 
-Any changes made will then take effect on the next reboot. 
+Any changes made will then take effect on the next reboot ↺
 
 
-Change Kernel Options for Generic Formix-Compliant Configuration (Citrix Zero Layer)
+
+
+
+
+Change Kernel Options for Generic Formix-Compliant Configuration (Formix / OpenCitrix Zero Layer)
 ----------------
 
 Compliant Configuration files consisting of various statements which include the following:
