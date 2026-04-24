@@ -28,7 +28,7 @@ $ make obj
 
          ============#   how to install a real operating system    #============ 
 
-Firstly one must ... download the fucking file set:
+Firstly, download a fucking file set from the internet or buy one for ten cents on the corner of van thrake the way god intended:
 
 
 File Sets
