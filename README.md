@@ -1342,7 +1342,7 @@ Furthermore, if there is a pointer at visible_bytes + i, then its accompanying A
 MOV AX, 123h
 ADD [AX+45h], 2
 ```
-Its microcode in execution order is:
+Its microcode should resemble this execution order:
 
 ; MOV r,i
 005  IMM                              PASS    RNI
