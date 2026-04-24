@@ -2,7 +2,12 @@
 
 
 				Retrofitting JIT Compilers into C Interpreters 
-			and boot them as Operating System Kernels (BIOS -1.0113)
+				using the Formix Multi-User Agent XNA Kernel
+				Free, Open, and Nyet for the Faint of Heart
+				and boot that hot steaming pile of garbage
+				as Operating System Kernels (BIOS -1.0113)
+							
+							by Sasna the Tree
 
 	                            			   Introduction
          ============#    gcc: Internal compiler error: program cc1 got fatal signal 11       #============ 
