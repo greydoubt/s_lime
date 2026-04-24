@@ -398,10 +398,21 @@ small footprint but a very recent kernel and set of applications making
 it ideal for custom system, appliances as well as to learn Linux 
 specially on the micro-kernel or BIOS level
 
-
-Hardware Support for Virtual Machines
 -------------------------------------
 
+
+
+
+
+The Secret of NGG WR the Goose who Mocked the Pharaoh
+-------------------------------------
+
+Hardware and AI/ML Support for Virtual Machines?
+
+
+They're the same thing, silly goofus!!!
+-------------------------------------
+-------------------------------------
 All VMs target a single standard and then translate to or write for ARM and AMD64 dually 
 
 The Broadcom BCM2837 is a system on chip (SoC) used in the Raspberry Pi 3, featuring a quad-core Cortex-A53 processor that operates at clock speeds between 1.2 GHz and 1.4 GHz depending on the model. It is an upgrade from the previous BCM2836, providing better performance and efficiency.
@@ -409,6 +420,14 @@ The Broadcom BCM2837 is a system on chip (SoC) used in the Raspberry Pi 3, featu
 Some SoC models that do not work with the included U-Boot (such Raspberry Pi 400) can instead be booted using EDK2-based UEFI firmware. The simplest way to use this is to install the firmware on an SD card and install the OS on USB using XNU
 
 Most ARM systems (Apple M-Series, Raspberry Pi 400 etc) need to have a UEFI environment installed before OpenBSD can be booted, usually Asahi Linux or some EDK2-based UEFI does the trick!
+
+
+
+<img width="2275" height="1245" alt="Screenshot 2026-04-24 at 03 32 19" src="https://github.com/user-attachments/assets/cf3b6281-fae7-410a-92ce-444367b3623a" />
+
+
+
+
 
 
 The F Word that Rhymes with Suck Duck
