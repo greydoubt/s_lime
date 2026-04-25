@@ -1,0 +1,78 @@
+3DMark 11
+3DMark 11 is a DirectX 11 gaming benchmark for Windows 7. It includes the Deep Sea and High Temple graphics tests, a Physics test, and a Combined test, and a selection of quality presets.
+https://benchmarks.ul.com/downloads/3dmark11.zip
+3D11-ADV-DJ72-S63F-PNHK-LCUM-SSSX
+
+3DMark Vantage
+3DMark Vantage is a DirectX 10 video card benchmark test for Windows Vista. It includes the Jane Nash and New Calico graphics tests, an AI test, a physics test and six feature tests.
+https://benchmarks.ul.com/downloads/3dmark-vantage.exe
+3DMVA-S1R5T-HXXPD-PWFPT-LF3HV-TQ5AZ-K5T5J-W1UEC
+
+3DMark06
+3DMark06 builds on 3DMark05 with DirectX 9 Shader Model 3.0 effects and new CPU tests using PhysX. The graphics tests are Return to Proxycon, Firefly Forest, Canyon Flight and Deep Freeze.
+https://benchmarks.ul.com/downloads/3dmark06.exe
+3DM06-YKL9-C7R6-73WW-AAPA-VHKW
+
+3DMark05
+With support for DirectX 9.0c and up to 2 million polygons on screen, 3DMark05 raised the bar for gaming benchmarks. Game tests include Return to Proxycon, Firefly Forest and Canyon Flight.
+https://benchmarks.ul.com/downloads/3dmark05.exe
+C1S0A-2VF80-D6RHW-UWZLU
+
+3DMark03
+3DMark03 uses a DirectX 9 engine created by Futuremark. It was the first 3DMark to include CPU tests. The graphics tests are Wings of Fury, Battle of Proxycon, Troll's Lair and Mother Nature.
+https://benchmarks.ul.com/downloads/3dmark03.exe
+N4LWE-T6HUX-8U4JB-28YLV
+
+3DMark2001
+3DMark2001 is a DirectX 8 benchmark. The Car Chase, Dragothic, Lobby and Nature tests feature vertex and pixel shaders and full scene anti-aliasing. 2001 SE added DirectX 8.1 support.
+https://benchmarks.ul.com/downloads/3dmark2001.exe
+7QMF2-TSLJR-ESRDD-L3FJF
+
+3DMark2000
+This is a DirectX 7 benchmark released under the MadOnion.com brand. The Helicopter and Adventure tests feature hardware transform and lighting, bump mapping, and LOD scaling.
+https://benchmarks.ul.com/downloads/3dmark2000.exe
+6VZTY-SDZ75-KA9V7    
+user: Futuremark
+
+3DMark99
+Using DirectX 6 and Remedy's MAX-FX engine to impressive effect, 3DMark99 was an instant hit with gamers, press and industry. 3DMark99 MAX added new content and online features.
+https://benchmarks.ul.com/downloads/3dmark99.exe
+78TR2-8DBDU-BMXXS    
+user: Futuremark
+
+PCMark 8
+PC performance benchmarking with system and component level tests for Windows 8.
+https://benchmarks.ul.com/downloads/pcmark8.zip
+PCM8-ADV-2TPT7-TKFDA-3HXUD-TZC4L
+
+PCMark 7
+PC performance benchmarking with system and component level tests for Windows 7.
+https://benchmarks.ul.com/downloads/pcmark7.exe
+PCM7-ADV-2W9R9-4U6RJ-X43A9-J3RE5
+
+PCMark Vantage
+PC performance benchmarking with system and component level tests for Windows Vista.
+https://benchmarks.ul.com/downloads/pcmark-vantage.exe
+PCMVA-TQMV-KBDH-K1BV-1LFC-4YE6
+
+PCMark05
+PC performance benchmarking with system and component level tests for Windows XP.
+https://benchmarks.ul.com/downloads/pcmark05.exe
+PCM05-K78Z-4NJ9-NECB-TR45-8MJR
+
+PCMark04
+PC performance benchmarking with system and component level tests for Windows 2000 and XP.
+https://benchmarks.ul.com/downloads/pcmark04.exe
+MRN2-FXMY-QBNX-CYKM-FD6N
+
+PCMark2002
+A unified benchmark for laptops, desktops and workstations running Windows 98 to XP.
+https://benchmarks.ul.com/downloads/pcmark2002.exe
+https://benchmarks.ul.com/downloads/pcmark2002propack.exe
+PSZNA-KSHVF-12QZT-27KHL
+
+Video2000
+The first benchmark to measure the quality, features and performance of video streams.
+https://benchmarks.ul.com/downloads/video2000.exe
+CS3E8-PDHVB-Z79RA    
+user: Futuremark
