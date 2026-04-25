@@ -26,6 +26,13 @@ $ rm -rf /usr/obj/*
 $ make obj
 
 
+
+
+
+
+https://github.com/user-attachments/assets/d7e40268-9ab7-4fa9-83d8-46109bb06272
+
+
          ============#   how to install a real operating system    #============ 
 
 Firstly, download a fucking file set from the internet or buy one for ten cents on the corner of van thrake the way god intended:
