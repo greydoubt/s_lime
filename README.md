@@ -28,6 +28,24 @@ $ make obj
 
 
 
+    Setup env
+```
+mkdir ~/.fonts
+cp src/fonts/* ~/.fonts
+fc-cache -f -v
+sudo apt-get update
+sudo apt install -y golang-go
+go get golang.org/x/image/draw
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:inkscape.dev/stable
+sudo apt-get update
+sudo apt install inkscape
+sudo apt install -y texlive-full
+```
+    Build: make shit, release
+```
+./make.sh release
+```
 
 
 https://github.com/user-attachments/assets/d7e40268-9ab7-4fa9-83d8-46109bb06272
