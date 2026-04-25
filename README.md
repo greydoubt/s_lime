@@ -2818,7 +2818,7 @@ ChainID(A|B|C) = Digest(Digest(DiffID(A) + " " + DiffID(B)) + " " + DiffID(C))
 Hopefully, the above is illustrative of the _actual_ contents of the `ChainID`.
 
 
-Otherwise we can extend IOKit into a Blockchain using Elliptical Curve Cryptography, in which you remap as a stream a hex-based source (or flow) and convert it bit-to-bye into octet, giving it 4-dimensions (id est post-quantum) using flat images to store fully 3d objects and their meshes over time (hence 4d animated indexically and rendered as a hash)
+Otherwise we can extend IOKit into a Blockchain using Elliptical Curve Cryptography, in which you remap as a stream a hex-based source (or flow) and convert it bit-to-byte (ergo a bit coin says goodbye to parts of the disc forming a ... bit coin) into octet, giving it 4-dimensions (id est post-quantum) using flat images to store fully 3d objects and their meshes over time (hence 4d animated indexically and rendered as a hash)
 
 
 <img width="1227" height="561" alt="Screenshot 2026-04-24 at 07 20 40" src="https://github.com/user-attachments/assets/9c6a8303-f02a-4537-98b9-c848cc966baf" />
