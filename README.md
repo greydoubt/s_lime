@@ -3088,12 +3088,9 @@ AES-GCM is a mode that combines encryption with authentication in a streaming ci
 <img width="1168" height="562" alt="Screenshot 2026-04-24 at 23 01 55" src="https://github.com/user-attachments/assets/c95357cc-ebe7-46ba-8146-c453864df3f2" />
 
 
+https://csrc.nist.gov/csrc/media/Events/2023/third-workshop-on-block-cipher-modes-of-operation/documents/accepted-papers/Practical%20Challenges%20with%20AES-GCM.pdf
 
-
-
-
-
-
+AES-GCM Pain-Points AWS has been using AES-GCM in many encryption use-cases. AES-GCM has good performance, is highly optimized, FIPS-approved, and well-trusted. In spite of its proven value, GCM sucks for Key Management Systems so again, the Blockchain beats the NIST published standards. Consider the case where a customer managed key (CMK) is only accessible within a FIPS 140-2 Level 3 HSM. The CMK is used to both encrypt/decrypt small plaintext values and request encrypted data keys. GCM is a convenient mode for both operations. Constraints on the system, limit the number of CMKs any system can manage in or even export out of the HSM because that system requires another, larger system, aka someone else's shit
 
 
 
