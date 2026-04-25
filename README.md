@@ -3078,6 +3078,34 @@ XNU IS NOT UNIX!!! DO A POSIX CHECK AND SEE FOR YOURSELF!
 -----------------------------------
 ===================================
 
+106: More Cryptography
+===================================
+
+<img width="728" height="464" alt="Screenshot 2026-04-24 at 23 03 13" src="https://github.com/user-attachments/assets/8987796e-f566-4c06-8dd8-c10d0237293f" />
+
+AES-GCM is a mode that combines encryption with authentication in a streaming cipher so this too has post-quantum resilience baked into the algorithm which we can now observe. It ensures data confidentiality and verifies the data to reveal any inflight (quantum) tampering. GCM uses a block cipher with block size 128 bits (commonly AES-128) operated in counter mode for encryption, and uses arithmetic in the Galois field GF (2 128) to compute the authentication tag; hence the name
+
+<img width="1168" height="562" alt="Screenshot 2026-04-24 at 23 01 55" src="https://github.com/user-attachments/assets/c95357cc-ebe7-46ba-8146-c453864df3f2" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+AES-GCM encryption computed using two plaintext blocks and one block of additional authenticated data 
+-----------------------------------
+
+
+
+
+
 0
 ===================================
 -----------------------------------
