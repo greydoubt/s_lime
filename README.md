@@ -861,12 +861,7 @@ SYNOPSIS
        options CAPABILITIES
 
 DESCRIPTION
-       Capsicum	 is a lightweight OS capability and sandbox framework imple-
-       menting a hybrid	capability system  model. Capsicum is designed  to
-       blend  capabilities  with  UNIX. This approach achieves many	of the
-       benets of least-privilege operation, while preserving existing UNIX
-       APIs and	performance, and presents application authors with an adoption
-       path for	capability-oriented design.
+       Capsicum	 is a lightweight OS capability and sandbox framework implementing a hybrid capability system model. Capsicum is designed to blend capabilities with UNIX. This approach achieves many of the benefits of least-privilege operation, while preserving existing UNIX APIs and performance, and presents application authors with an adoptionpath for capability-oriented design
 
        Capabilities  are unforgeable tokens of authority that can be delegated
        and must	be presented to	perform	an action. Capsicum  makes  file  de-
@@ -879,7 +874,7 @@ DESCRIPTION
 
        Capsicum	provides two core kernel primitives:
 
-       capability mode
+       *capability mode*
 	       A  process mode,	entered	by invoking cap_enter(2), in which ac-
 	       cess to global OS namespaces (such as the file system  and  PID
 	       namespaces)  is	restricted;  only explicitly delegated rights,
@@ -905,7 +900,7 @@ DESCRIPTION
 	       system  calls  are constrained so that they can only operate on
 	       objects under the provided file descriptor.
 
-       capabilities
+       *capabilities*
 	       Limit operations	that can be called on file  descriptors.   For
 	       example,	 a  file descriptor returned by	open(2)	may be refined
 	       using cap_rights_limit(2) so that only read(2) and write(2) can
