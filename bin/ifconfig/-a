@@ -1,0 +1,11 @@
+wm0: flags=0x8802<BROADCAST,SIMPLEX,MULTICAST> mtu 1500
+        capabilities=2bf80<TSO4,IP4CSUM_Rx,IP4CSUM_Tx,TCP4CSUM_Rx>
+        capabilities=2bf80<TCP4CSUM_Tx,UDP4CSUM_Rx,UDP4CSUM_Tx,TCP6CSUM_Tx>
+        capabilities=2bf80<UDP6CSUM_Tx>
+        enabled=0
+        ec_capabilities=7<VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU>
+        ec_enabled=0
+        address: 08:00:27:7e:85:d7
+        media: Ethernet autoselect (1000baseT full-duplex)
+        status: active
+lo0: flags=0x8048<LOOPBACK,RUNNING,MULTICAST> mtu 33624
