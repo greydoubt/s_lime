@@ -1,0 +1,1 @@
+# mount -t cd9660 -o ro /dev/cd0a /cdrom
