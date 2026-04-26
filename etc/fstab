@@ -1,0 +1,3 @@
+### .... rest of some other shit 
+# To make things easier, you can add a line to the /etc/fstab file:
+/dev/cd0a /cdrom cd9660 ro,noauto 0 0
