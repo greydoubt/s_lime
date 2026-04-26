@@ -1,1 +1,5 @@
+If the desired interface has not been shown, get more information about all the devices found during system boot. Type:
 
+# dmesg | more
+
+As instructed, you can return to the NetBSD installation by typing either “exit” or “^D” (“Ctrl+D”)
