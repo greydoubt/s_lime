@@ -1,0 +1,3 @@
+# mcopy foo bar a:
+# mcopy a:baz.txt baz
+# mcopy a:\*.jpg .
