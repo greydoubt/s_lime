@@ -1,0 +1,25 @@
+How to install on to a system using an Adaptec 7890/7896 SCSI controller
+using the R4.5 CD and R4.5.2 update and boot floppy.
+
+1. get the 4.5.2-boot.img file from the ftp site:
+   ftp://ftp.be.com/pub/beos_updates/r4.5/R4.5.2-boot.img
+
+2. get the image on to a floppy disk
+   - dd if=4.5.2-boot.img of=/dev/disk/floppy/raw bs=10240   (on BeOS)
+   - dd if=4.5.2-boot.img of=/dev/fd0 bs=10240               (on Linux)
+   - rawrite                                                 (on DOS)
+     (download the rawrite utility from:
+      ftp://cdrom.com/pub/linux/slackware/install/)
+
+3. boot the 4.5 CD using the floppy disk (make sure your machine doesn't
+   boot the CD, skipping the floppy (since the CD itself is bootable))
+
+4. Install 4.5 (it can see the 789x due to the drivers on the floppy)
+
+5. Boot the installed 4.5 using the floppy (be sure to remove the CD)
+
+6. Install the 4.5.2 update.
+
+7. Enjoy Ultra2Wide SCSI.
+
+
