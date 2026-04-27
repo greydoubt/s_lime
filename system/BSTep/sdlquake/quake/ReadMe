@@ -1,0 +1,41 @@
+Quake (SDL Version, BeOS Alpha 1)
+
+BeOS binary by David Powell (david@mad.scientist.com)
+http://www.madprof.org.uk
+
+This is a BeOS binary version of the SDL port of Quake.
+The original SDL source code is available from the SDL website:
+http://www.devolution.com/~slouken/SDL/projects/quake/
+The tweeked BeOS version of the SDL source code is available from my website:
+http://www.madprof.org.uk
+
+The vast majority of the work was done by Sam Lantinga (slouken@devolution.com).
+I have only tweeked a few files so that it compiles and runs under BeOS.
+
+This is a VERY quick port, IT IS NOT PERFECT.
+Sound is choppy, the frame rate is low (but perfectly playable), networking doesn't work, CD audio doesn't work, ONLY tested with the shareware levels.
+
+I wasn't going to bother releasing this version, but I had a few requests for it...
+
+
+Installation instructions:
+
+As you are reading this, I presume that you have extracted the sdlquake binary to a folder somewhere on your system. SDL Quake can be run from ANY folder.
+
+You MUST have the latest version of the SDL library installed (Version 1.0.1 or higher).
+You can get SDL from http://www.devolution.com/~slouken/SDL/ 
+Just download the BeOS version and follow the installation instructions.
+
+You will also need the Quake shareware levels.
+Download the file quakesw-1.0.6.tar.gz from http://www.devolution.com/~slouken/SDL/projects/quake/ 
+Make sure you get the .tar.gz file and NOT the .zip file.
+Extract the archive, which should leave you with a folder called id1. Move this into the quake folder.
+
+SDL quake MUST be run from the Terminal. You cannot run it by double clicking the icon.
+Open the Terminal application.
+Type cd <dir name> to get to the correct directory. e.g. If the quake folder is in the home directory you would type cd /boot/home/quake
+Then type sdlquake to start.
+If you want to change the size of the window you can use the -winsize option.
+e.g. To start Quake in a window size of 800x600
+use the command sdlquake -winsize 800 600 from the terminal.
+
