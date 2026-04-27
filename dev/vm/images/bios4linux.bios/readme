@@ -1,0 +1,7 @@
+BeOS Personal Edition for Linux
+
+To boot the image.be Personal Edition partition image, place it at in a directory called 'beos' at any root point on a ext2 partition.  ex, /beos/image.be, or if you have /home on a seperate partition,
+it could be placed at /home/beos/image.be
+
+Then create a boot floppy from floppy.img, and reboot!
+(try dd if=floppy.img of=/dev/fd0 bs=512 conv=sync; sync )
