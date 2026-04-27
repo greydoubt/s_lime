@@ -27,6 +27,23 @@ $ make obj
 
 
 
+# XNU Struct Definitions
+========================
+Struct			Header
+------------------------
+proc			bsd/sys/proc_internal.h
+vnode			bsd/sys/vnode_internal.h
+socket			bsd/sys/socketvar.h
+ucred			bsd/sys/ucred.h
+task			osfmk/kern/task.h
+thread			osfmk/kern/thread.h
+filedesc		bsd/sys/filedesc.h
+fileproc		bsd/sys/file_internal.h
+fileglob		bsd/sys/file_internal.h
+mount			bsd/sys/mount_internal.h
+
+
+------------------------
 
     Setup env
 ```
