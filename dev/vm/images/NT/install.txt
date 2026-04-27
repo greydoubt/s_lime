@@ -1,0 +1,8 @@
+The program in this directory, addbeos, will add the BeOS 
+partition to the NT boot manager selection screen.  Please
+refer to the installation notes for more details on using
+this tool (you will find the instructions in the section
+entitled "For Advanced Users").
+
+
+

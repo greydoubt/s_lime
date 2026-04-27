@@ -1,0 +1,1 @@
+cpimage ..\zbeos a:

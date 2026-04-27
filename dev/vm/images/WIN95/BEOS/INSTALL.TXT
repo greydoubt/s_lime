@@ -1,0 +1,44 @@
+
+Here is the quick and dirty installation instructions.
+(Please note the end of the file for known problems.)
+
+Copy the BEOS directory to your C: drive. The directory 
+is hard-coded in the scripts, and must never be changed.
+
+
+Double-click the 'BEOS' file to start BeOS.
+
+---- BeOS icon on the desktop
+
+For added usefulness, you can right-click-and-drag the 
+'BEOS' file to your desktop. You can then select either
+'Copy' or 'Create Shortcut', and you'll be one click away from
+starting BeOS at any time.
+
+---- Note for DOS-only people
+
+If you're a DOS-only person, you can use the 'beos.com' file to
+start BeOS from the command-line. You can copy it to a directory
+on your PATH for easy access. (But if you use a disk cache, please
+add a line in it to flush your cache.)
+
+---- Will Not Work on WinNT
+
+BeOS.com will not work with any known version of WinNT. Sorry.
+
+Other boot methods will work fine.
+
+---- Will Not Work with multi-CPU machines and Windows
+
+The Belaunch may not properly start BeOS if the
+Windows machine has more than one CPU. Sorry.
+
+Other boot methods will work fine.
+
+---- Trademarks
+
+Be is a registered trademark, and BeOS, BeBox, GeekPort, the 
+Be Logo, and the BeOS logo are trademarks of Be, Inc.
+
+All other trademarks mentioned are the property of their 
+respective owners.

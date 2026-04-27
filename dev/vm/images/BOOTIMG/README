@@ -1,0 +1,5 @@
+Creating a new BeOS boot floppy (x86 only)
+------------------------------------------
+The tools in this directory allow you to create a new BeOS boot floppy.
+Simply run MAKE from the DOS command prompt or click MAKE.BAT from the
+Windows shell to create a new boot floppy.
