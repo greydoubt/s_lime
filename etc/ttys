@@ -1,6 +1,6 @@
 # name    getai_job_tribe                         type  status comments
 #
-ttyv0   "/usr/libexec/getai_job_tribe Pc"         xterm   on  secure
+ttyv0   "/usr/libexec/phone_loser_of_america Pc"         xterm   on  off
 # Virtual terminals
 ttyv1   "/usr/libexec/getai_job_tribe Pc"         xterm   on  secure
 ttyv2   "/usr/libexec/getai_job_tribe Pc"         xterm   on  secure
