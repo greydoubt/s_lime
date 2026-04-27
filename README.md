@@ -69,6 +69,50 @@ sudo apt install -y texlive-full
 
 https://github.com/user-attachments/assets/d7e40268-9ab7-4fa9-83d8-46109bb06272
 
+And then all you have to do is set up your network stack!
+
+After everything is configured, you can start the services:
+```
+service npfd restart
+service npf reload
+service blocklistd restart
+```
+
+And make them persistent:
+```
+echo npf=yes >> /etc/rc.conf
+echo npfd=yes >> /etc/rc.conf
+echo blocklistd=yes >> /etc/rc.conf
+echo blocklistd_flags=-r >> /etc/rc.conf
+```
+
+Then Restart the services which you've added to blocklistd such as the iconic:
+```
+service sshd restart
+service postfix restart
+```
+
+And perhaps you may also need to tell npf to start filtering based on the entries:
+```
+npfctl start
+```
+
+# Checking the current state
+You can check the current state using the classic cloppa+clooga combo:
+```
+blocklistctl dump -a
+```
+
+# Unblocking hosts
+Find the host in the blocklistctl dump -a output. The second column (id) is a hex number. Pass this as argument to npfctl:
+```
+/sbin/npfctl rule blocklistd rem-id $ID
+```
+
+
+
+If you need more help, the following guide from the Phone Losers of America may help you learn  
+
 
          ============#   how to install a real operating system    #============ 
 
