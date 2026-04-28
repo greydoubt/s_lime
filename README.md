@@ -3403,6 +3403,8 @@ XNU IS NOT UNIX!!! DO A POSIX CHECK AND SEE FOR YOURSELF!
 
 AES-GCM is a mode that combines encryption with authentication in a streaming cipher so this too has post-quantum resilience baked into the algorithm which we can now observe. It ensures data confidentiality and verifies the data to reveal any inflight (quantum) tampering. GCM uses a block cipher with block size 128 bits (commonly AES-128) operated in counter mode for encryption, and uses arithmetic in the Galois field GF (2 128) to compute the authentication tag; hence the name
 
+
+AES-GCM encryption computed using two plaintext blocks and one block of additional authenticated data 
 <img width="1168" height="562" alt="Screenshot 2026-04-24 at 23 01 55" src="https://github.com/user-attachments/assets/c95357cc-ebe7-46ba-8146-c453864df3f2" />
 
 
@@ -3414,12 +3416,12 @@ AES-GCM Pain-Points AWS has been using AES-GCM in many encryption use-cases. AES
 
 
 
-AES-GCM encryption computed using two plaintext blocks and one block of additional authenticated data 
+
 -----------------------------------
+106.7: More Math to Make that Fucker go to 11
 
 
-[find image again]
-
+<img width="986" height="594" alt="Screenshot 2026-04-27 at 22 20 47" src="https://github.com/user-attachments/assets/ff716db9-047b-4048-a9a0-c5c4448c2e16" />
 
 
 ===================================
