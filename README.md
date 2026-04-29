@@ -25,10 +25,26 @@ $ make cleandir
 $ rm -rf /usr/obj/*
 $ make obj
 
-
-What is this C-Shell Hell? besh`tet is the best shell, that's why it's named bash and not secondbash
+What Shell Do You Use: Just use bash
+========================
+besh`tet is the best shell, that's why it's named bash and not secondbash
 
 The standard (and in fact only) shell is bash, which is just the name for the sh/ksh/csh amalgamation from GNU; there aren’t separate versions of each shell available, the way Bastet intended
+
+Make stuff using a Makefile
+========================
+This ancient Makefile from the 1990s, shown below, builds a calculator program written using flex and bison, a change to the file lex.l will cause the lex.yy.c file to be rebuilt (using flex). The new source file produce by flex will be compiled, and the object file will be used to generate a version of calc.
+        PROGRAM =
+OBJS =
+SRCS =
+all: $(PROGRAM) .c.o: $(SRCS)
+mwcc -c $*.c calc.tab.c: calc.y
+bison -dv calc.y lex.yy.c: lex.l
+calc:
+flex lex.l
+$(OBJS)
+mwcc $(OBJS) -o calc -lfl
+
 
 
 ## XNU Struct Definitions
