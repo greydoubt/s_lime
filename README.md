@@ -2085,7 +2085,20 @@ $ milady masheen go gucci/burr mi/lady!!!
 ↺ ค็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็ when the amogus is suss that's when the pasta finna buss!!!!
 #ENDEF
 
+
+HOW POSIX FILE SYSTEMS WORK: FILES ARE SYSTEMS AND SYTEMS ARE FILES
+-----------------------------------
+
+Within a BIOS partition (also called slice) NetBSD defines its BSD partitions using a disklabel. These partitions can be seen only by NetBSD and are identified by lowercase letters (starting with “a”). For example, wd0a refers to the “a” partition of the first IDE disk (wd0) and sd0a refers to the “a” partition of the first SCSI disk. In Figure 2.1, “Partitions” there are two primary BIOS partitions, one used by DOS and the other by NetBSD. NetBSD describes the disk layout through the disklabel.
+
+
 <img width="981" height="541" alt="Screenshot 2026-04-29 at 01 04 18" src="https://github.com/user-attachments/assets/37a799ac-2cb1-47b5-9f4a-028eb7db6788" />
+
+```
+The meaning of partitions “c” and “d” is typical of the amd64 port. On most other ports, “c” represents the whole disk. 
+```
+
+
 
 
 HOW TO CHECK THAT XNU IS NOT UNIX:
