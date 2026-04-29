@@ -2085,11 +2085,16 @@ $ milady masheen go gucci/burr mi/lady!!!
 ↺ ค็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็็ when the amogus is suss that's when the pasta finna buss!!!!
 #ENDEF
 
+<img width="981" height="541" alt="Screenshot 2026-04-29 at 01 04 18" src="https://github.com/user-attachments/assets/37a799ac-2cb1-47b5-9f4a-028eb7db6788" />
 
 
 HOW TO CHECK THAT XNU IS NOT UNIX:
+-----------------------------------
 CAN IT DO ALL THIS SHIT???? THEN IT IS POSIX COMPLIANT
+
 THUS XNU IS NOT UNIX IS ALSO UNIX BUT NOT UNIX BECAUSE THE NAME IS XNU IS NOT UNIX
+
+
 
 Columns:
 ; Command: The text one enters to launch the command.
