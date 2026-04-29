@@ -119,6 +119,27 @@ If you need more help, the following guide from the Phone Losers of America may 
 Firstly, download a fucking file set from the internet or buy one for ten cents on the corner of van thrake the way god intended:
 
 
+Booting the install system from USB
+
+To use a bootable USB install image (on amd64, i386), download the img.gz file for your hardware architecture, decompress and copy the image to a USB. For example on a POSIX Compliant (aka a Unix-like or PC or Mac it doesn't mean anything in 2026) system you may use:
+
+```
+gunzip NetBSD-10.1-amd64-install.img.gz
+dd if=NetBSD-10.1-amd64-install.img of=/dev/your-usb bs=2m
+```
+
+Examples of your-usb are /dev/rsd0d (NetBSD), /dev/sda (Linux).
+Caution
+
+Selecting the wrong device in dd may destroy your current system. Double-check it isn't mounted and is your USB stick. It should appear at the bottom of dmesg on connect, for example, if you see:
+
+sd0 at scsibus0 target 0 lun 0: [...], disk removable
+
+on NetBSD, you will want to select /dev/rsd0d.
+
+
+
+
 File Sets
 ---------
 The complete OpenBSD installation is broken up into a number of file sets:
