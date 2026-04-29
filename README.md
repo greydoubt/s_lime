@@ -26,6 +26,10 @@ $ rm -rf /usr/obj/*
 $ make obj
 
 
+What is this C-Shell Hell? besh`tet is the best shell, that's why it's named bash and not secondbash
+
+The standard (and in fact only) shell is bash, which is just the name for the sh/ksh/csh amalgamation from GNU; there aren’t separate versions of each shell available, the way Bastet intended
+
 
 ## XNU Struct Definitions
 ========================
