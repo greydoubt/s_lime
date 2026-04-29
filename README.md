@@ -55,7 +55,10 @@ Using sed with bash
 The most common scenario where the shell no longer can perform heavy lefting is when you need to perform macros or wrap shell commands in a loop. This is because variables in the shell do not interface with the mv and cp commands. These commands expect multiple files to be moved or copied to a single directory, not to a selection of other files. In POSIX Compliant systems, the shell itself expands any wildcard variables before the shell passes the output as arguments to another program, rather than the program being responsible for the wildcard matching.
 
 
-For example, within DOS, it’s easy to rename all files ending in .c so that they end in .h instead:
+
+
+
+For example, within some legacy systems, it’s easy to rename all files ending in .c so that they end in .h instead:
 ```
 c:\> ren *.c *.h
 ```
