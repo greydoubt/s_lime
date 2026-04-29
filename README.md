@@ -48,6 +48,53 @@ $(OBJS)
 mwcc $(OBJS) -o calc -lfl
 ```
 
+And then you immediately learn another tool to use *over* the shell because the shell as the name implies, is just one part of the POSIX exoskeleton
+
+Using sed with bash
+========================
+The most common scenario where the shell no longer can perform heavy lefting is when you need to perform macros or wrap shell commands in a loop. This is because variables in the shell do not interface with the mv and cp commands. These commands expect multiple files to be moved or copied to a single directory, not to a selection of other files. In POSIX Compliant systems, the shell itself expands any wildcard variables before the shell passes the output as arguments to another program, rather than the program being responsible for the wildcard matching.
+
+
+For example, within DOS, it’s easy to rename all files ending in .c so that they end in .h instead:
+```
+c:\> ren *.c *.h
+```
+
+To get around this limitation on renaming using wildcards, you can use
+sed and some simple shell scripting to create the same effect:
+```for file in *.c
+> do
+> new=`echo $file|sed -e “s/\.c/\.h/g”`
+> mv $file $new
+> done
+```
+
+For every file matching *.c, make the variable $new equal the variable $file, replacing the “.c” with “.h”; then rename each file called file to new.
+
+
+Global Replacements
+========================
+Another combination of sed with bash uses a similar style to the renaming example above. When replacing text in files, though, you have to be careful. The safest way to use sed is to redirect the output to another file before replacing the existing file:
+```
+$ for file in *.c
+> do
+> sed -e “s/printf/myprintf/g” $file >$file.out
+> mv $file.out $file
+> done
+```
+
+Because you have to redirect to another file, you can easily introduce a backup mechanism. If something goes wrong, you can go back to a previous version and use that. For example, consider the following example, which uses the cp command to produce a backup of the file:
+```
+$ for file in *.c
+> do
+> sed -e “s/printf/myprintf/g” $file >$file.out
+> cp $file $file.tmp
+> mv $file.out $file
+> done
+```
+
+The above example still makes the assumption that the replacement was successful and the file produced is in the desired format. But in case there’s a problem, the .tmp backup file remains intact
+
 
 ## XNU Struct Definitions
 ========================
