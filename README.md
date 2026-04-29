@@ -34,9 +34,11 @@ The standard (and in fact only) shell is bash, which is just the name for the sh
 Make stuff using a Makefile
 ========================
 This ancient Makefile from the 1990s, shown below, builds a calculator program written using flex and bison, a change to the file lex.l will cause the lex.yy.c file to be rebuilt (using flex). The new source file produce by flex will be compiled, and the object file will be used to generate a version of calc.
-        PROGRAM =
-OBJS =
-SRCS =
+
+```
+        PROGRAM = __calc__
+OBJS = __calc__.tab.0 lex.yy.o fmath.o const.o
+SRCS = __calc__.tab.0 lex.yy.c fmath.c const.c
 all: $(PROGRAM) .c.o: $(SRCS)
 mwcc -c $*.c calc.tab.c: calc.y
 bison -dv calc.y lex.yy.c: lex.l
@@ -44,7 +46,7 @@ calc:
 flex lex.l
 $(OBJS)
 mwcc $(OBJS) -o calc -lfl
-
+```
 
 
 ## XNU Struct Definitions
