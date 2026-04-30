@@ -25,7 +25,7 @@ $ make cleandir
 $ rm -rf /usr/obj/*
 $ make obj
 
-What Shell Do You Use: Just use bash
+What Shell? Just use bash
 ========================
 besh`tet is the best shell, that's why it's named bash and not secondbash
 
@@ -672,6 +672,10 @@ sub eax, eax alter the AF flag by clearing it
 
 
 
+<img width="868" height="783" alt="HHIygiJXcAAZo4E" src="https://github.com/user-attachments/assets/ad81c5df-25d9-4b25-9fd9-453231d2019d" />
+
+
+
 Preface
 =======
 
@@ -1009,6 +1013,11 @@ kernel
 It is not possible to log in as root
 
 
+This pattern repeated all the way down *to* the GPU driverspace and then back up again as a dual-cascading graph:
+
+
+
+<img width="699" height="985" alt="HHIygiFXMAAcq9e" src="https://github.com/user-attachments/assets/37d512d6-f7eb-4018-a33b-4482d619ade2" />
 
 
 
