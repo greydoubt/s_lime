@@ -182,6 +182,25 @@ Find the host in the blocklistctl dump -a output. The second column (id) is a he
 ```
 
 
+And then update the kernel in-place to whatever you want:
+
+To determine how to upgrade packages with pkg, you must determine if there is a kernel change with pkg update -f
+```
+> sudo pkg update -f
+Updating GhostBSD repository catalogue...
+pkg: Repository GhostBSD has a wrong packagesite, need to re-create database
+Fetching meta.conf: 100%    163 B   0.2kB/s    00:01
+Fetching packagesite.pkg: 100%    7 MiB   6.9MB/s    00:01
+Processing entries:   0%
+Newer FreeBSD version for package ztrack:
+To ignore this error set IGNORE_OSVERSION=yes
+- package: 1302505
+- running kernel: 1301510
+Ignore the mismatch and continue? [y/N]:
+```
+
+
+
 
 If you need more help, the following guide from the Phone Losers of America may help you learn  
 
