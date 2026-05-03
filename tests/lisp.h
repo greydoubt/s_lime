@@ -257,6 +257,19 @@ extern void l_obj_print(long number);  // exten lisp function switches on number
 static inline void *symbol_value(void *sym) { return ((LSymbol *)sym)->GetValue(); }
 static inline char *lstring_value(void *str) { return ((LString *)str)->GetString(); }
 
-#include "lisp_opt.h"
+#ifndef __LISP_OPT_HPP_
+#define __LISP_OPT_HPP_
+
+#include "lisp.h"
+
+extern LObject *l_undefined;
+extern LSymbol *true_symbol, *list_symbol, *string_symbol, *quote_symbol,
+     *backquote_symbol, *comma_symbol, *do_symbol, *in_symbol, *aref_symbol,
+     *if_symbol, *progn_symbol, *car_symbol, *cdr_symbol;
+
+extern void *colon_initial_contents, *colon_initial_element, *load_warning;
+
+#endif
+
 
 #endif
